@@ -1,0 +1,422 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punjabi Jutti Store</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f2;
+    color: #333;
+}
+
+header {
+    background: #8b0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    margin-top: 5px;
+}
+
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.product img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product h3 {
+    margin: 12px 0 5px;
+}
+
+.price {
+    color: #8b0000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 7px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #600000;
+}
+
+.cart {
+    background: white;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.cart h2 {
+    margin-bottom: 15px;
+}
+
+#cartItems {
+    margin-bottom: 15px;
+}
+
+.customer-form {
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    background: #8b0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .product img {
+        height: 200px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Punjabi Jutti Store</h1>
+    <p>Traditional Punjabi Jutti – Stylish & Comfortable</p>
+</header>
+
+<div class="container">
+
+<h2 style="margin-bottom:20px;">Our Punjabi Jutti Collection</h2>
+
+<div class="products">
+
+<!-- PRODUCT 1 -->
+<div class="product">
+    <img src="images/jutti1.jpg" alt="Punjabi Jutti">
+
+    <h3>Traditional Punjabi Jutti</h3>
+
+    <div class="price">₹999</div>
+
+    <label>Size:</label>
+    <select id="size1">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty1" value="1" min="1">
+
+    <button onclick="addToCart('Traditional Punjabi Jutti',999,'size1','qty1')">
+        Add to Cart
+    </button>
+</div>
+
+
+<!-- PRODUCT 2 -->
+<div class="product">
+    <img src="images/jutti2.jpg" alt="Punjabi Jutti">
+
+    <h3>Golden Embroidery Jutti</h3>
+
+    <div class="price">₹1299</div>
+
+    <label>Size:</label>
+    <select id="size2">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty2" value="1" min="1">
+
+    <button onclick="addToCart('Golden Embroidery Jutti',1299,'size2','qty2')">
+        Add to Cart
+    </button>
+</div>
+
+
+<!-- PRODUCT 3 -->
+<div class="product">
+    <img src="images/jutti3.jpg" alt="Punjabi Jutti">
+
+    <h3>Designer Punjabi Jutti</h3>
+
+    <div class="price">₹1499</div>
+
+    <label>Size:</label>
+    <select id="size3">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty3" value="1" min="1">
+
+    <button onclick="addToCart('Designer Punjabi Jutti',1499,'size3','qty3')">
+        Add to Cart
+    </button>
+</div>
+
+</div>
+
+
+<!-- CART -->
+<div class="cart">
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartItems">
+    Your cart is empty.
+</div>
+
+<h3>Total: ₹<span id="cartTotal">0</span></h3>
+
+
+<!-- CUSTOMER DETAILS -->
+<div class="customer-form">
+
+<h2>Customer Details</h2>
+
+<input type="text" id="customerName" placeholder="Full Name">
+
+<input type="tel" id="customerMobile" placeholder="Mobile Number">
+
+<textarea id="customerAddress" rows="4"
+placeholder="Full Delivery Address"></textarea>
+
+<button onclick="placeOrder()">
+    Place Order
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+    © 2026 Punjabi Jutti Store | All Rights Reserved
+</footer>
+
+
+<script>
+
+let cart = [];
+
+function addToCart(name, price, sizeId, qtyId) {
+
+    let size = document.getElementById(sizeId).value;
+    let quantity = parseInt(document.getElementById(qtyId).value);
+
+    if(quantity < 1) {
+        alert("Please select a valid quantity.");
+        return;
+    }
+
+    cart.push({
+        name: name,
+        price: price,
+        size: size,
+        quantity: quantity
+    });
+
+    displayCart();
+
+    alert("Product added to cart!");
+}
+
+
+function displayCart() {
+
+    let cartItems = document.getElementById("cartItems");
+
+    if(cart.length === 0) {
+        cartItems.innerHTML = "Your cart is empty.";
+        document.getElementById("cartTotal").innerText = "0";
+        return;
+    }
+
+    let html = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+
+        let itemTotal = item.price * item.quantity;
+
+        total += itemTotal;
+
+        html += `
+        <div style="border-bottom:1px solid #ddd;padding:10px 0;">
+
+            <strong>${item.name}</strong><br>
+
+            Size: ${item.size}<br>
+
+            Quantity: ${item.quantity}<br>
+
+            Price: ₹${item.price}<br>
+
+            Subtotal: ₹${itemTotal}
+
+            <button
+                onclick="removeItem(${index})"
+                style="margin-top:8px;background:#555;">
+                Remove
+            </button>
+
+        </div>
+        `;
+    });
+
+    cartItems.innerHTML = html;
+
+    document.getElementById("cartTotal").innerText = total;
+}
+
+
+function removeItem(index) {
+
+    cart.splice(index,1);
+
+    displayCart();
+}
+
+
+function placeOrder() {
+
+    if(cart.length === 0) {
+
+        alert("Please add a product to your cart first.");
+
+        return;
+    }
+
+    let name =
+        document.getElementById("customerName").value.trim();
+
+    let mobile =
+        document.getElementById("customerMobile").value.trim();
+
+    let address =
+        document.getElementById("customerAddress").value.trim();
+
+
+    if(name === "" || mobile === "" || address === "") {
+
+        alert("Please fill all customer details.");
+
+        return;
+    }
+
+
+    let order = {
+
+        customerName: name,
+
+        mobile: mobile,
+
+        address: address,
+
+        products: cart,
+
+        orderDate: new Date().toLocaleString()
+
+    };
+
+
+    console.log("ORDER:", order);
+
+
+    alert(
+        "Thank you " + name +
+        "! Your order has been received."
+    );
+
+
+    cart = [];
+
+    displayCart();
+
+    document.getElementById("customerName").value = "";
+
+    document.getElementById("customerMobile").value = "";
+
+    document.getElementById("customerAddress").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
+```
