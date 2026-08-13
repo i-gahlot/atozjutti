@@ -1,136 +1,260 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punjabi Jutti Store</title>
+
+<title>PunjabiJutti - Traditional Punjabi Jutti</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #fff8f2;
-    color: #333;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#faf7f2;
+    color:#222;
 }
 
-header {
-    background: #8b0000;
-    color: white;
-    text-align: center;
-    padding: 20px;
+header{
+    background:#8b0000;
+    color:white;
+    text-align:center;
+    padding:25px 10px;
 }
 
-header h1 {
-    font-size: 30px;
+header h1{
+    margin:0;
+    font-size:36px;
 }
 
-header p {
-    margin-top: 5px;
+header p{
+    margin:8px 0 0;
+    font-size:16px;
 }
 
-.container {
-    width: 95%;
-    max-width: 1100px;
-    margin: 25px auto;
+nav{
+    background:#222;
+    padding:14px;
+    text-align:center;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
 }
 
-.product {
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+.hero{
+    text-align:center;
+    padding:40px 20px;
 }
 
-.product img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 10px;
+.hero h2{
+    font-size:30px;
+    color:#8b0000;
 }
 
-.product h3 {
-    margin: 12px 0 5px;
+.products{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
 }
 
-.price {
-    color: #8b0000;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.product-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,0.12);
+    text-align:center;
+    padding-bottom:20px;
 }
 
-select,
+.product-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
+
+.product-card h3{
+    margin:15px 10px 8px;
+    color:#8b0000;
+}
+
+.product-card p{
+    margin:5px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.buy-btn{
+    margin-top:12px;
+    background:#8b0000;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.buy-btn:hover{
+    background:#650000;
+}
+
+.order-section{
+    max-width:700px;
+    margin:40px auto;
+    padding:30px 20px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,0.12);
+}
+
+.order-section h2{
+    text-align:center;
+    color:#8b0000;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
 input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 7px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #8b0000;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-button:hover {
-    background: #600000;
+.selected-product{
+    background:#fff3cd;
+    padding:12px;
+    border-radius:6px;
+    margin-bottom:15px;
 }
 
-.cart {
-    background: white;
-    margin-top: 30px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+.summary{
+    margin-top:20px;
+    border-top:1px solid #ddd;
+    padding-top:15px;
 }
 
-.cart h2 {
-    margin-bottom: 15px;
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
 }
 
-#cartItems {
-    margin-bottom: 15px;
+.grand-total{
+    font-size:22px;
+    font-weight:bold;
+    color:#8b0000;
+    border-top:2px solid #8b0000;
+    margin-top:8px;
+    padding-top:12px;
 }
 
-.customer-form {
-    margin-top: 20px;
+.place-order{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    background:#008000;
+    color:white;
+    border:none;
+    border-radius:7px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-footer {
-    margin-top: 40px;
-    background: #8b0000;
-    color: white;
-    text-align: center;
-    padding: 20px;
+.place-order:hover{
+    background:#006400;
 }
 
-@media(max-width:600px) {
-    header h1 {
-        font-size: 24px;
+.place-order:disabled{
+    background:#888;
+    cursor:not-allowed;
+}
+
+.message{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:6px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.message.success{
+    background:#d4edda;
+    color:#155724;
+}
+
+.message.error{
+    background:#f8d7da;
+    color:#721c24;
+}
+
+.whatsapp{
+    display:none;
+    margin-top:15px;
+    background:#25D366;
+    color:white;
+    text-align:center;
+    padding:14px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.contact{
+    text-align:center;
+    padding:40px 20px;
+    background:#eee;
+    margin-top:40px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:28px;
     }
 
-    .product img {
-        height: 200px;
+    nav a{
+        margin:0 7px;
+        font-size:14px;
+    }
+
+    .product-card img{
+        height:220px;
     }
 }
 </style>
@@ -139,279 +263,804 @@ footer {
 <body>
 
 <header>
-    <h1>Punjabi Jutti Store</h1>
-    <p>Traditional Punjabi Jutti – Stylish & Comfortable</p>
+    <h1>PunjabiJutti</h1>
+    <p>Traditional • Stylish • Handmade Punjabi Jutti</p>
 </header>
 
-<div class="container">
+<nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-<h2 style="margin-bottom:20px;">Our Punjabi Jutti Collection</h2>
+<section id="home" class="hero">
 
-<div class="products">
+    <h2>Beautiful Punjabi Jutti</h2>
 
-<!-- PRODUCT 1 -->
-<div class="product">
-    <img src="images/jutti1.jpg" alt="Punjabi Jutti">
+    <p>
+        Discover our collection of traditional and designer Punjabi Jutti.
+    </p>
 
-    <h3>Traditional Punjabi Jutti</h3>
+</section>
 
-    <div class="price">₹999</div>
+<section id="products" class="products">
 
-    <label>Size:</label>
-    <select id="size1">
+    <div class="product-card">
+
+        <img src="images/jutti1.jpg" alt="Traditional Punjabi Jutti">
+
+        <h3>Traditional Punjabi Jutti</h3>
+
+        <p class="price">₹999</p>
+
+        <button
+            class="buy-btn"
+            onclick="selectProduct('Traditional Punjabi Jutti')">
+            Buy Now
+        </button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="images/jutti2.jpg" alt="Embroidered Punjabi Jutti">
+
+        <h3>Embroidered Punjabi Jutti</h3>
+
+        <p class="price">₹1099</p>
+
+        <button
+            class="buy-btn"
+            onclick="selectProduct('Embroidered Punjabi Jutti')">
+            Buy Now
+        </button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="images/jutti3.jpg" alt="Designer Punjabi Jutti">
+
+        <h3>Designer Punjabi Jutti</h3>
+
+        <p class="price">₹1199</p>
+
+        <button
+            class="buy-btn"
+            onclick="selectProduct('Designer Punjabi Jutti')">
+            Buy Now
+        </button>
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img src="images/jutti4.jpg" alt="Wedding Punjabi Jutti">
+
+        <h3>Wedding Punjabi Jutti</h3>
+
+        <p class="price">₹1299</p>
+
+        <button
+            class="buy-btn"
+            onclick="selectProduct('Wedding Punjabi Jutti')">
+            Buy Now
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="order" class="order-section">
+
+    <h2>Place Your Order</h2>
+
+    <div class="selected-product">
+
+        Selected Product:
+
+        <strong id="selectedProduct">
+            Please select a product
+        </strong>
+
+    </div>
+
+
+    <label for="productName">
+        Product
+    </label>
+
+    <select id="productName" onchange="updatePrice()">
+
+        <option value="">
+            -- Select Product --
+        </option>
+
+        <option value="Traditional Punjabi Jutti">
+            Traditional Punjabi Jutti - ₹999
+        </option>
+
+        <option value="Embroidered Punjabi Jutti">
+            Embroidered Punjabi Jutti - ₹1099
+        </option>
+
+        <option value="Designer Punjabi Jutti">
+            Designer Punjabi Jutti - ₹1199
+        </option>
+
+        <option value="Wedding Punjabi Jutti">
+            Wedding Punjabi Jutti - ₹1299
+        </option>
+
+    </select>
+
+
+    <label for="size">
+        Size
+    </label>
+
+    <select id="size">
+
+        <option value="">
+            -- Select Size --
+        </option>
+
         <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
         <option value="10">10</option>
+
     </select>
 
-    <label>Quantity:</label>
-    <input type="number" id="qty1" value="1" min="1">
 
-    <button onclick="addToCart('Traditional Punjabi Jutti',999,'size1','qty1')">
-        Add to Cart
-    </button>
-</div>
+    <label for="quantity">
+        Quantity
+    </label>
 
+    <select id="quantity" onchange="updateTotal()">
 
-<!-- PRODUCT 2 -->
-<div class="product">
-    <img src="images/jutti2.jpg" alt="Punjabi Jutti">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
 
-    <h3>Golden Embroidery Jutti</h3>
-
-    <div class="price">₹1299</div>
-
-    <label>Size:</label>
-    <select id="size2">
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
     </select>
 
-    <label>Quantity:</label>
-    <input type="number" id="qty2" value="1" min="1">
 
-    <button onclick="addToCart('Golden Embroidery Jutti',1299,'size2','qty2')">
-        Add to Cart
+    <label for="customerName">
+        Customer Name
+    </label>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Enter your full name"
+    >
+
+
+    <label for="mobile">
+        Mobile Number
+    </label>
+
+    <input
+        type="tel"
+        id="mobile"
+        placeholder="Enter 10 digit mobile number"
+        maxlength="10"
+        inputmode="numeric"
+    >
+
+
+    <label for="address">
+        Delivery Address
+    </label>
+
+    <textarea
+        id="address"
+        placeholder="Enter complete delivery address"
+    ></textarea>
+
+
+    <div class="summary">
+
+        <div class="summary-row">
+
+            <span>
+                Price per pair:
+            </span>
+
+            <strong>
+                ₹<span id="displayPrice">0</span>
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Quantity:
+            </span>
+
+            <strong id="displayQuantity">
+                1
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row grand-total">
+
+            <span>
+                Total:
+            </span>
+
+            <span>
+                ₹<span id="displayTotal">0</span>
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="placeOrderButton"
+        class="place-order"
+        onclick="placeOrder()">
+
+        Place Order
+
     </button>
-</div>
 
 
-<!-- PRODUCT 3 -->
-<div class="product">
-    <img src="images/jutti3.jpg" alt="Punjabi Jutti">
-
-    <h3>Designer Punjabi Jutti</h3>
-
-    <div class="price">₹1499</div>
-
-    <label>Size:</label>
-    <select id="size3">
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-
-    <label>Quantity:</label>
-    <input type="number" id="qty3" value="1" min="1">
-
-    <button onclick="addToCart('Designer Punjabi Jutti',1499,'size3','qty3')">
-        Add to Cart
-    </button>
-</div>
-
-</div>
+    <div
+        id="message"
+        class="message">
+    </div>
 
 
-<!-- CART -->
-<div class="cart">
+    <a
+        id="whatsappButton"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener">
 
-<h2>🛒 Your Cart</h2>
+        Send Order Details on WhatsApp
 
-<div id="cartItems">
-    Your cart is empty.
-</div>
+    </a>
 
-<h3>Total: ₹<span id="cartTotal">0</span></h3>
+</section>
 
 
-<!-- CUSTOMER DETAILS -->
-<div class="customer-form">
+<section id="contact" class="contact">
 
-<h2>Customer Details</h2>
+    <h2>Contact Us</h2>
 
-<input type="text" id="customerName" placeholder="Full Name">
+    <p>
+        For Punjabi Jutti orders and enquiries,
+        please contact us.
+    </p>
 
-<input type="tel" id="customerMobile" placeholder="Mobile Number">
-
-<textarea id="customerAddress" rows="4"
-placeholder="Full Delivery Address"></textarea>
-
-<button onclick="placeOrder()">
-    Place Order
-</button>
-
-</div>
-
-</div>
-
-</div>
+</section>
 
 
 <footer>
-    © 2026 Punjabi Jutti Store | All Rights Reserved
+
+    © 2026 PunjabiJutti. All Rights Reserved.
+
 </footer>
 
 
-<script>
+<script type="module">
 
-let cart = [];
+/* =====================================================
+   SUPABASE CONNECTION
+   ===================================================== */
 
-function addToCart(name, price, sizeId, qtyId) {
+import {
+    createClient
+}
+from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-    let size = document.getElementById(sizeId).value;
-    let quantity = parseInt(document.getElementById(qtyId).value);
 
-    if(quantity < 1) {
-        alert("Please select a valid quantity.");
-        return;
+const SUPABASE_URL =
+"https://qgeuqzaymbzzmymqtsoj.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_FSTxrJY2dLbswu-z97XTMg_-SV-7-Bt";
+
+
+const supabase =
+createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth:{
+            persistSession:false,
+            autoRefreshToken:false,
+            detectSessionInUrl:false
+        }
     }
+);
 
-    cart.push({
-        name: name,
-        price: price,
-        size: size,
-        quantity: quantity
+
+/* =====================================================
+   PRODUCT PRICES
+   ===================================================== */
+
+const prices = {
+
+    "Traditional Punjabi Jutti":999,
+
+    "Embroidered Punjabi Jutti":1099,
+
+    "Designer Punjabi Jutti":1199,
+
+    "Wedding Punjabi Jutti":1299
+
+};
+
+
+/* =====================================================
+   SELECT PRODUCT
+   ===================================================== */
+
+window.selectProduct =
+function(productName){
+
+    document
+    .getElementById("productName")
+    .value = productName;
+
+    document
+    .getElementById("selectedProduct")
+    .textContent = productName;
+
+    updatePrice();
+
+    document
+    .getElementById("order")
+    .scrollIntoView({
+        behavior:"smooth"
     });
 
-    displayCart();
-
-    alert("Product added to cart!");
-}
+};
 
 
-function displayCart() {
+/* =====================================================
+   UPDATE PRICE
+   ===================================================== */
 
-    let cartItems = document.getElementById("cartItems");
+window.updatePrice =
+function(){
 
-    if(cart.length === 0) {
-        cartItems.innerHTML = "Your cart is empty.";
-        document.getElementById("cartTotal").innerText = "0";
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    document
+    .getElementById("selectedProduct")
+    .textContent =
+    product || "Please select a product";
+
+
+    document
+    .getElementById("displayPrice")
+    .textContent = price;
+
+
+    updateTotal();
+
+};
+
+
+/* =====================================================
+   UPDATE TOTAL
+   ===================================================== */
+
+window.updateTotal =
+function(){
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
+
+
+    document
+    .getElementById("displayQuantity")
+    .textContent =
+    quantity;
+
+
+    document
+    .getElementById("displayTotal")
+    .textContent =
+    total;
+
+};
+
+
+/* =====================================================
+   PLACE ORDER
+   ===================================================== */
+
+window.placeOrder =
+async function(){
+
+    const button =
+    document
+    .getElementById("placeOrderButton");
+
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const size =
+    document
+    .getElementById("size")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const customerName =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+    const mobile =
+    document
+    .getElementById("mobile")
+    .value
+    .trim();
+
+
+    const address =
+    document
+    .getElementById("address")
+    .value
+    .trim();
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
+
+
+    /* VALIDATION */
+
+    if(!product){
+
+        showMessage(
+            "Please select a product.",
+            false
+        );
+
         return;
     }
 
-    let html = "";
-    let total = 0;
 
-    cart.forEach((item, index) => {
+    if(!size){
 
-        let itemTotal = item.price * item.quantity;
-
-        total += itemTotal;
-
-        html += `
-        <div style="border-bottom:1px solid #ddd;padding:10px 0;">
-
-            <strong>${item.name}</strong><br>
-
-            Size: ${item.size}<br>
-
-            Quantity: ${item.quantity}<br>
-
-            Price: ₹${item.price}<br>
-
-            Subtotal: ₹${itemTotal}
-
-            <button
-                onclick="removeItem(${index})"
-                style="margin-top:8px;background:#555;">
-                Remove
-            </button>
-
-        </div>
-        `;
-    });
-
-    cartItems.innerHTML = html;
-
-    document.getElementById("cartTotal").innerText = total;
-}
-
-
-function removeItem(index) {
-
-    cart.splice(index,1);
-
-    displayCart();
-}
-
-
-function placeOrder() {
-
-    if(cart.length === 0) {
-
-        alert("Please add a product to your cart first.");
-
-        return;
-    }
-
-    let name =
-        document.getElementById("customerName").value.trim();
-
-    let mobile =
-        document.getElementById("customerMobile").value.trim();
-
-    let address =
-        document.getElementById("customerAddress").value.trim();
-
-
-    if(name === "" || mobile === "" || address === "") {
-
-        alert("Please fill all customer details.");
+        showMessage(
+            "Please select shoe size.",
+            false
+        );
 
         return;
     }
 
 
-    let order = {
+    if(!customerName){
 
-        customerName: name,
+        showMessage(
+            "Please enter your name.",
+            false
+        );
 
-        mobile: mobile,
+        return;
+    }
 
-        address: address,
 
-        products: cart,
+    if(!/^[0-9]{10}$/.test(mobile)){
 
-        orderDate: new Date().toLocaleString()
+        showMessage(
+            "Please enter a valid 10 digit mobile number.",
+            false
+        );
+
+        return;
+    }
+
+
+    if(!address){
+
+        showMessage(
+            "Please enter your complete delivery address.",
+            false
+        );
+
+        return;
+    }
+
+
+    if(price <= 0){
+
+        showMessage(
+            "Product price is not available.",
+            false
+        );
+
+        return;
+    }
+
+
+    /* DISABLE BUTTON */
+
+    button.disabled = true;
+
+    button.textContent =
+    "Saving Order...";
+
+
+    showMessage(
+        "Please wait... Saving your order.",
+        true
+    );
+
+
+    /* ORDER DATA */
+
+    const orderData = {
+
+        customer_name:customerName,
+
+        mobile:mobile,
+
+        address:address,
+
+        product_name:product,
+
+        size:size,
+
+        quantity:quantity,
+
+        price:price,
+
+        total:total
 
     };
 
 
-    console.log("ORDER:", order);
-
-
-    alert(
-        "Thank you " + name +
-        "! Your order has been received."
+    console.log(
+        "Sending order:",
+        orderData
     );
 
 
-    cart = [];
+    try{
 
-    displayCart();
+        /* =================================================
+           SUPABASE INSERT
+           ================================================= */
 
-    document.getElementById("customerName").value = "";
+        const result =
+        await supabase
+        .from("orders")
+        .insert([orderData]);
 
-    document.getElementById("customerMobile").value = "";
 
-    document.getElementById("customerAddress").value = "";
+        console.log(
+            "Supabase result:",
+            result
+        );
+
+
+        if(result.error){
+
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
+
+
+            showMessage(
+                "Order could not be saved: " +
+                result.error.message,
+                false
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+            "Place Order";
+
+            return;
+        }
+
+
+        /* =================================================
+           SUCCESS
+           ================================================= */
+
+        showMessage(
+            "🎉 Order saved successfully!",
+            true
+        );
+
+
+        button.textContent =
+        "Order Placed ✓";
+
+
+        /* =================================================
+           WHATSAPP
+           ================================================= */
+
+        const whatsappMessage =
+
+`Hello PunjabiJutti,
+
+I want to place an order.
+
+Customer Name: ${customerName}
+Product: ${product}
+Size: ${size}
+Quantity: ${quantity}
+Price: ₹${price}
+Total: ₹${total}
+Mobile: ${mobile}
+
+Delivery Address:
+${address}
+
+Thank you.`;
+
+
+        /*
+        IMPORTANT:
+        CHANGE THIS NUMBER TO YOUR BUSINESS
+        WHATSAPP NUMBER.
+
+        Example:
+        9876543210
+
+        becomes:
+
+        919876543210
+        */
+
+        const businessWhatsApp =
+        "919999999999";
+
+
+        const whatsappURL =
+        "https://wa.me/" +
+        businessWhatsApp +
+        "?text=" +
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+        const whatsappButton =
+        document
+        .getElementById(
+            "whatsappButton"
+        );
+
+
+        whatsappButton.href =
+        whatsappURL;
+
+
+        whatsappButton.style.display =
+        "block";
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "CONNECTION ERROR:",
+            error
+        );
+
+
+        showMessage(
+
+            "Connection error: " +
+            error.message,
+
+            false
+
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+        "Place Order";
+
+    }
+
+};
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+function showMessage(
+    text,
+    success
+){
+
+    const message =
+    document
+    .getElementById("message");
+
+
+    message.textContent =
+    text;
+
+
+    message.style.display =
+    "block";
+
+
+    message.className =
+    success
+    ? "message success"
+    : "message error";
 
 }
 
@@ -419,4 +1068,3 @@ function placeOrder() {
 
 </body>
 </html>
-```
