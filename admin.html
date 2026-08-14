@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PunjabiJutti Admin Dashboard</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #8b0000;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #8b0000;
+    margin-top: 0;
+}
+
+.login-box p {
+    text-align: center;
+    color: #666;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #8b0000;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background: #650000;
+}
+
+.login-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    display: none;
+    font-weight: bold;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+#dashboardPage {
+    display: none;
+}
+
+.header {
+    background: #8b0000;
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.header-buttons button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.refresh-button {
+    background: #198754;
+    color: white;
+}
+
+.logout-button {
+    background: white;
+    color: #8b0000;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat-box h3 {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+}
+
+.stat-box .number {
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #8b0000;
+}
+
+/* =========================
+   ORDERS
+========================= */
+
+.orders-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.orders-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.orders-top h2 {
+    margin: 0;
+    color: #8b0000;
+}
+
+.status-message {
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    display: none;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+th {
+    background: #8b0000;
+    color: white;
+    padding: 12px 8px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 11px 8px;
+    vertical-align: top;
+}
+
+tr:hover {
+    background: #fafafa;
+}
+
+.no-orders {
+    text-align: center;
+    padding: 35px;
+    color: #777;
+    font-size: 17px;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp-button {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 8px 11px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.whatsapp-button:hover {
+    background: #1da851;
+}
+
+/* =========================
+   DELETE
+========================= */
+
+.delete-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background: #bb2d3b;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .header {
+        align-items: flex-start;
+    }
+
+    .header-buttons {
+        width: 100%;
+    }
+
+    .header-buttons button {
+        margin: 5px 5px 0 0;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .orders-box {
+        padding: 12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <h1>PunjabiJutti</h1>
+
+        <p>Admin Login</p>
+
+        <label for="email">Admin Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter admin email"
+            autocomplete="username"
+        >
+
+        <label for="password">Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+        >
+
+        <button
+            class="login-button"
+            id="loginButton"
+            onclick="login()"
+        >
+            Login
+        </button>
+
+        <div
+            id="loginMessage"
+            class="login-message"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<div id="dashboardPage">
+
+    <div class="header">
+
+        <h1>PunjabiJutti Admin Dashboard</h1>
+
+        <div class="header-buttons">
+
+            <button
+                class="refresh-button"
+                onclick="loadOrders()"
+            >
+                🔄 Refresh Orders
+            </button>
+
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+
+                <h3>Total Orders</h3>
+
+                <div
+                    class="number"
+                    id="totalOrders"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <h3>Total Quantity</h3>
+
+                <div
+                    class="number"
+                    id="totalQuantity"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <h3>Total Sales</h3>
+
+                <div
+                    class="number"
+                    id="totalSales"
+                >
+                    ₹0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <div class="orders-box">
+
+            <div class="orders-top">
+
+                <h2>Customer Orders</h2>
+
+                <div id="lastUpdated"></div>
+
+            </div>
+
+
+            <div
+                id="statusMessage"
+                class="status-message"
+            ></div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Order ID</th>
+
+                            <th>Date</th>
+
+                            <th>Customer Name</th>
+
+                            <th>Mobile</th>
+
+                            <th>Address</th>
+
+                            <th>Product</th>
+
+                            <th>Size</th>
+
+                            <th>Qty</th>
+
+                            <th>Price</th>
+
+                            <th>Total</th>
+
+                            <th>WhatsApp</th>
+
+                            <th>Delete</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="ordersTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script type="module">
+
+import {
+    createClient
+}
+from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL =
+"https://qgeuqzaymbzzmymqtsoj.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_FSTxrJY2dLbswu-z97XTMg_-SV-7-Bt";
+
+
+const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        }
+    }
+);
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loginPage =
+document.getElementById("loginPage");
+
+const dashboardPage =
+document.getElementById("dashboardPage");
+
+const loginMessage =
+document.getElementById("loginMessage");
+
+const statusMessage =
+document.getElementById("statusMessage");
+
+const ordersTableBody =
+document.getElementById("ordersTableBody");
+
+
+/* =====================================================
+   LOGIN MESSAGE
+===================================================== */
+
+function showLoginMessage(text, success = false) {
+
+    loginMessage.textContent = text;
+
+    loginMessage.style.display = "block";
+
+    if (success) {
+
+        loginMessage.style.background = "#d1e7dd";
+        loginMessage.style.color = "#0f5132";
+
+    } else {
+
+        loginMessage.style.background = "#f8d7da";
+        loginMessage.style.color = "#842029";
+
+    }
+
+}
+
+
+/* =====================================================
+   STATUS MESSAGE
+===================================================== */
+
+function showStatus(text) {
+
+    statusMessage.textContent = text;
+
+    statusMessage.style.display = "block";
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+window.login = async function() {
+
+    const email =
+    document.getElementById("email").value.trim();
+
+    const password =
+    document.getElementById("password").value;
+
+
+    if (!email) {
+
+        showLoginMessage(
+            "Please enter your email."
+        );
+
+        return;
+    }
+
+
+    if (!password) {
+
+        showLoginMessage(
+            "Please enter your password."
+        );
+
+        return;
+    }
+
+
+    const loginButton =
+    document.getElementById("loginButton");
+
+
+    loginButton.disabled = true;
+
+    loginButton.textContent = "Logging in...";
+
+
+    const {
+        data,
+        error
+    } = await supabase.auth.signInWithPassword({
+
+        email: email,
+
+        password: password
+
+    });
+
+
+    if (error) {
+
+        console.error(
+            "LOGIN ERROR:",
+            error
+        );
+
+        showLoginMessage(
+            "Login failed: " +
+            error.message
+        );
+
+        loginButton.disabled = false;
+
+        loginButton.textContent = "Login";
+
+        return;
+    }
+
+
+    console.log(
+        "LOGIN SUCCESS:",
+        data.user
+    );
+
+
+    showLoginMessage(
+        "Login successful.",
+        true
+    );
+
+
+    setTimeout(() => {
+
+        loginPage.style.display = "none";
+
+        dashboardPage.style.display = "block";
+
+        loadOrders();
+
+    }, 500);
+
+};
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+window.logout = async function() {
+
+    await supabase.auth.signOut();
+
+    dashboardPage.style.display = "none";
+
+    loginPage.style.display = "flex";
+
+    document.getElementById("password").value = "";
+
+};
+
+
+/* =====================================================
+   CHECK EXISTING SESSION
+===================================================== */
+
+async function checkSession() {
+
+    const {
+        data,
+        error
+    } = await supabase.auth.getSession();
+
+
+    if (error) {
+
+        console.error(
+            "SESSION ERROR:",
+            error
+        );
+
+        return;
+    }
+
+
+    if (data.session) {
+
+        console.log(
+            "Existing session found."
+        );
+
+        loginPage.style.display = "none";
+
+        dashboardPage.style.display = "block";
+
+        loadOrders();
+
+    } else {
+
+        loginPage.style.display = "flex";
+
+        dashboardPage.style.display = "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD ORDERS
+===================================================== */
+
+window.loadOrders = async function() {
+
+    console.log(
+        "Loading orders..."
+    );
+
+
+    showStatus(
+        "Loading orders from Supabase..."
+    );
+
+
+    ordersTableBody.innerHTML = "";
+
+
+    /* -------------------------------------------------
+       CHECK LOGIN SESSION
+    ------------------------------------------------- */
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } = await supabase.auth.getSession();
+
+
+    if (sessionError) {
+
+        console.error(
+            "SESSION ERROR:",
+            sessionError
+        );
+
+        showStatus(
+            "Session error: " +
+            sessionError.message
+        );
+
+        return;
+    }
+
+
+    if (!sessionData.session) {
+
+        showStatus(
+            "You are not logged in. Please login again."
+        );
+
+        dashboardPage.style.display = "none";
+
+        loginPage.style.display = "flex";
+
+        return;
+    }
+
+
+    console.log(
+        "Authenticated as:",
+        sessionData.session.user.email
+    );
+
+
+    /* -------------------------------------------------
+       FETCH ORDERS
+    ------------------------------------------------- */
+
+    const {
+        data: orders,
+        error
+    } = await supabase
+
+        .from("orders")
+
+        .select("*")
+
+        .order("created_at", {
+            ascending: false
+        });
+
+
+    console.log(
+        "ORDERS RESPONSE:",
+        orders
+    );
+
+
+    console.log(
+        "ORDERS ERROR:",
+        error
+    );
+
+
+    /* -------------------------------------------------
+       ERROR
+    ------------------------------------------------- */
+
+    if (error) {
+
+        console.error(
+            "SUPABASE ORDERS ERROR:",
+            error
+        );
+
+
+        showStatus(
+            "Unable to load orders: " +
+            error.message
+        );
+
+
+        ordersTableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="12"
+                    class="no-orders"
+                >
+
+                    ❌ Error loading orders.
+
+                    <br><br>
+
+                    ${escapeHTML(error.message)}
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+    }
+
+
+    /* -------------------------------------------------
+       NO ORDERS
+    ------------------------------------------------- */
+
+    if (!orders || orders.length === 0) {
+
+        showStatus(
+            "No orders found."
+        );
+
+
+        ordersTableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="12"
+                    class="no-orders"
+                >
+
+                    No orders found in the orders table.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        updateStats([]);
+
+        return;
+    }
+
+
+    /* -------------------------------------------------
+       ORDERS FOUND
+    ------------------------------------------------- */
+
+    console.log(
+        "Number of orders:",
+        orders.length
+    );
+
+
+    showStatus(
+        orders.length +
+        " order(s) loaded successfully."
+    );
+
+
+    orders.forEach(order => {
+
+        addOrderRow(order);
+
+    });
+
+
+    updateStats(orders);
+
+
+    document.getElementById(
+        "lastUpdated"
+    ).textContent =
+        "Updated: " +
+        new Date().toLocaleString();
+
+};
+
+
+/* =====================================================
+   ADD ORDER ROW
+===================================================== */
+
+function addOrderRow(order) {
+
+    const row =
+    document.createElement("tr");
+
+
+    const orderId =
+    order.id ?? "";
+
+
+    const createdAt =
+    order.created_at
+        ? new Date(order.created_at).toLocaleString()
+        : "";
+
+
+    const customerName =
+    order.customer_name ?? "";
+
+
+    const mobile =
+    order.mobile ?? "";
+
+
+    const address =
+    order.address ?? "";
+
+
+    const productName =
+    order.product_name ?? "";
+
+
+    const size =
+    order.size ?? "";
+
+
+    const quantity =
+    Number(order.quantity ?? 0);
+
+
+    const price =
+    Number(order.price ?? 0);
+
+
+    const total =
+    Number(order.total ?? 0);
+
+
+    const whatsappNumber =
+    mobile.replace(/[^0-9]/g, "");
+
+
+    let whatsappURL = "#";
+
+
+    if (whatsappNumber) {
+
+        let formattedNumber =
+        whatsappNumber;
+
+
+        /* ---------------------------------------------
+           India number conversion
+        --------------------------------------------- */
+
+        if (
+            formattedNumber.length === 10 &&
+            formattedNumber.startsWith("0") === false
+        ) {
+
+            formattedNumber =
+            "91" +
+            formattedNumber;
+
+        }
+
+
+        if (
+            formattedNumber.length === 11 &&
+            formattedNumber.startsWith("0")
+        ) {
+
+            formattedNumber =
+            "91" +
+            formattedNumber.substring(1);
+
+        }
+
+
+        const message =
+
+`Hello ${customerName},
+
+Regarding your PunjabiJutti order:
+
+Product: ${productName}
+Size: ${size}
+Quantity: ${quantity}
+Price: ₹${price}
+Total: ₹${total}
+
+Thank you.`;
+
+
+        whatsappURL =
+            "https://wa.me/" +
+            formattedNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+    }
+
+
+    row.innerHTML = `
+
+        <td>
+            ${escapeHTML(String(orderId))}
+        </td>
+
+
+        <td>
+            ${escapeHTML(createdAt)}
+        </td>
+
+
+        <td>
+            <strong>
+                ${escapeHTML(String(customerName))}
+            </strong>
+        </td>
+
+
+        <td>
+            ${escapeHTML(String(mobile))}
+        </td>
+
+
+        <td>
+            ${escapeHTML(String(address))}
+        </td>
+
+
+        <td>
+            ${escapeHTML(String(productName))}
+        </td>
+
+
+        <td>
+            ${escapeHTML(String(size))}
+        </td>
+
+
+        <td>
+            ${quantity}
+        </td>
+
+
+        <td>
+            ₹${price.toLocaleString("en-IN")}
+        </td>
+
+
+        <td>
+            <strong>
+                ₹${total.toLocaleString("en-IN")}
+            </strong>
+        </td>
+
+
+        <td>
+
+            ${
+                whatsappNumber
+                ?
+                `
+                <a
+                    href="${whatsappURL}"
+                    target="_blank"
+                    class="whatsapp-button"
+                >
+                    WhatsApp
+                </a>
+                `
+                :
+                "No mobile"
+            }
+
+        </td>
+
+
+        <td>
+
+            <button
+                class="delete-button"
+                onclick="deleteOrder('${escapeAttribute(String(orderId))}')"
+            >
+                Delete
+            </button>
+
+        </td>
+
+    `;
+
+
+    ordersTableBody.appendChild(row);
+
+}
+
+
+/* =====================================================
+   UPDATE STATISTICS
+===================================================== */
+
+function updateStats(orders) {
+
+    let totalQuantity = 0;
+
+    let totalSales = 0;
+
+
+    orders.forEach(order => {
+
+        totalQuantity +=
+            Number(order.quantity || 0);
+
+        totalSales +=
+            Number(order.total || 0);
+
+    });
+
+
+    document.getElementById(
+        "totalOrders"
+    ).textContent =
+        orders.length;
+
+
+    document.getElementById(
+        "totalQuantity"
+    ).textContent =
+        totalQuantity;
+
+
+    document.getElementById(
+        "totalSales"
+    ).textContent =
+        "₹" +
+        totalSales.toLocaleString("en-IN");
+
+}
+
+
+/* =====================================================
+   DELETE ORDER
+===================================================== */
+
+window.deleteOrder = async function(orderId) {
+
+    if (!orderId) {
+
+        alert(
+            "Order ID is missing."
+        );
+
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this order?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+    }
+
+
+    showStatus(
+        "Deleting order..."
+    );
+
+
+    const {
+        error
+    } = await supabase
+
+        .from("orders")
+
+        .delete()
+
+        .eq("id", orderId);
+
+
+    if (error) {
+
+        console.error(
+            "DELETE ERROR:",
+            error
+        );
+
+
+        alert(
+            "Could not delete order: " +
+            error.message
+        );
+
+
+        return;
+    }
+
+
+    alert(
+        "Order deleted successfully."
+    );
+
+
+    loadOrders();
+
+};
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   ESCAPE ATTRIBUTE
+===================================================== */
+
+function escapeAttribute(value) {
+
+    return String(value)
+
+        .replace(/\\/g, "\\\\")
+
+        .replace(/'/g, "\\'")
+
+        .replace(/"/g, "&quot;");
+
+}
+
+
+/* =====================================================
+   ENTER KEY LOGIN
+===================================================== */
+
+document.getElementById(
+    "password"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            login();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   AUTH STATE CHANGE
+===================================================== */
+
+supabase.auth.onAuthStateChange(
+    (event, session) => {
+
+        console.log(
+            "AUTH EVENT:",
+            event
+        );
+
+
+        if (
+            event === "SIGNED_OUT"
+        ) {
+
+            dashboardPage.style.display =
+                "none";
+
+            loginPage.style.display =
+                "flex";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkSession();
+
+</script>
+
+</body>
+</html>
