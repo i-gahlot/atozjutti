@@ -354,6 +354,24 @@ footer{background:#2d080d;color:#fff}
 @media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.product-grid{grid-template-columns:1fr}.product-image{height:330px}.hero h2{font-size:32px}}
 
+
+/* PRODUCT IMAGE FIX */
+.product-image{
+  width:100%;
+  height:320px;
+  overflow:hidden;
+  position:relative;
+  background:#f5e9df;
+  cursor:pointer;
+}
+.product-image img{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
 </style>
 </head>
 
@@ -400,7 +418,7 @@ footer{background:#2d080d;color:#fff}
 
             <div class="product-image" onclick="selectProduct('Traditional Punjabi Jutti')" title="Click to order">
                 <span class="photo-price">₹999</span>
-                <img src="jutti1.jpg"
+                <img src="./jutti1.jpg?v=3"
                      alt="Traditional Punjabi Jutti">
             </div>
 
@@ -429,7 +447,7 @@ footer{background:#2d080d;color:#fff}
 
             <div class="product-image" onclick="selectProduct('Embroidered Punjabi Jutti')" title="Click to order">
                 <span class="photo-price">₹1099</span>
-                <img src="jutti2.jpg"
+                <img src="./jutti2.jpg?v=3"
                      alt="Embroidered Punjabi Jutti">
             </div>
 
@@ -458,7 +476,7 @@ footer{background:#2d080d;color:#fff}
 
             <div class="product-image" onclick="selectProduct('Designer Punjabi Jutti')" title="Click to order">
                 <span class="photo-price">₹1199</span>
-                <img src="jutti3.jpg"
+                <img src="./jutti3.jpg?v=3"
                      alt="Designer Punjabi Jutti">
             </div>
 
@@ -487,7 +505,7 @@ footer{background:#2d080d;color:#fff}
 
             <div class="product-image" onclick="selectProduct('Wedding Punjabi Jutti')" title="Click to order">
                 <span class="photo-price">₹1299</span>
-                <img src="jutti4.jpg"
+                <img src="./jutti4.jpg?v=3"
                      alt="Wedding Punjabi Jutti">
             </div>
 
