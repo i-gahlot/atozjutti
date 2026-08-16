@@ -1,9 +1,622 @@
-        price * quantity;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PunjabiJutti - Traditional Punjabi Jutti</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:#fffaf5;color:#2b1b1b}
+header{position:relative;background:linear-gradient(135deg,#5d0712,#a91d35 55%,#d48b2a);color:#fff;text-align:center;padding:46px 16px 42px;overflow:hidden}
+header:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.18),transparent 28%),radial-gradient(circle at 85% 80%,rgba(255,220,130,.2),transparent 30%);pointer-events:none}
+header h1{position:relative;z-index:1;margin:0;font-size:clamp(34px,6vw,58px);letter-spacing:1px;font-weight:800}
+header p{position:relative;z-index:1;margin:10px 0 0;font-size:17px;opacity:.95}
+nav{position:sticky;top:0;z-index:50;background:rgba(35,18,18,.96);padding:13px 10px;text-align:center;box-shadow:0 3px 15px rgba(0,0,0,.15)}
+nav a{color:#fff;text-decoration:none;margin:0 14px;font-weight:700;font-size:15px}
+nav a:hover{color:#f6c96b}
+.hero{text-align:center;padding:58px 20px 35px;background:linear-gradient(180deg,#fff7ed,#fffaf5)}
+.hero h2{font-size:clamp(28px,5vw,42px);margin:0 0 12px;color:#8f1628}
+.hero p{max-width:720px;margin:0 auto;color:#705b5b;font-size:17px;line-height:1.7}
+.hero .tagline{display:inline-block;margin-top:18px;padding:8px 16px;border-radius:30px;background:#f8e4bd;color:#6d3912;font-weight:700}
+.products{max-width:1250px;margin:auto;padding:30px 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.product-card{position:relative;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(73,32,32,.12);text-align:center;padding-bottom:22px;border:1px solid #f1dfd1;transition:transform .25s,box-shadow .25s}
+.product-card:hover{transform:translateY(-7px);box-shadow:0 16px 38px rgba(73,32,32,.2)}
+.product-card img{width:100%;height:300px;object-fit:cover;display:block;background:#f2e7dc;transition:transform .4s;cursor:pointer}
+.product-card:hover img{transform:scale(1.035);filter:brightness(1.03)}
+.product-card h3{margin:18px 10px 7px;color:#86162a;font-size:20px}
+.product-card p{margin:5px}
+.price{font-size:21px;font-weight:800;color:#2d1b1b}
+.buy-btn{margin-top:13px;background:linear-gradient(135deg,#8b1227,#bd2e48);color:#fff;border:none;padding:12px 25px;border-radius:30px;cursor:pointer;font-size:16px;font-weight:700;box-shadow:0 5px 14px rgba(139,18,39,.25);transition:.2s}
+.buy-btn:hover{transform:translateY(-2px);background:linear-gradient(135deg,#6d0c1c,#a82038)}
+.order-section{max-width:760px;margin:25px auto 60px;padding:34px 24px;background:#fff;border-radius:22px;box-shadow:0 10px 35px rgba(73,32,32,.13);border:1px solid #f0ddd0}
+.order-section h2{text-align:center;color:#8b1227;font-size:30px}
+label{display:block;margin-top:16px;font-weight:700;color:#493535}
+input,select,textarea{width:100%;padding:13px;margin-top:7px;border:1px solid #d9c8bf;border-radius:10px;font-size:16px;background:#fffdfb}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#a91d35;box-shadow:0 0 0 3px rgba(169,29,53,.1)}
+textarea{min-height:105px;resize:vertical}
+.selected-product{background:#fff3d7;padding:14px;border-radius:10px;margin-bottom:16px;border-left:4px solid #d49a38}
+.summary{margin-top:22px;border-top:1px solid #eadbd3;padding-top:15px}
+.summary-row{display:flex;justify-content:space-between;padding:9px 0}
+.grand-total{font-size:23px;font-weight:800;color:#8b1227;border-top:2px solid #8b1227;margin-top:8px;padding-top:13px}
+.place-order{width:100%;margin-top:22px;padding:15px;background:linear-gradient(135deg,#087b43,#11a45a);color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(8,123,67,.2)}
+.place-order:hover{filter:brightness(.95)}
+.place-order:disabled{background:#888;cursor:not-allowed}
+.message{display:none;margin-top:20px;padding:15px;border-radius:9px;text-align:center;font-weight:700}
+.message.success{background:#dff4e5;color:#126132}.message.error{background:#fde1e3;color:#8a1c27}
+.whatsapp{display:none;margin-top:15px;background:#25D366;color:white;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:800}
+.contact{text-align:center;padding:52px 20px;background:linear-gradient(135deg,#f5e8dc,#fff8f0);margin-top:10px}
+.contact h2{color:#8b1227}
+footer{background:#241719;color:#fff;text-align:center;padding:24px}
+@media(max-width:600px){
+nav a{margin:0 7px;font-size:13px}
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px 12px 45px}
+.product-card{border-radius:15px;padding-bottom:15px}
+.product-card img{height:210px}
+.product-card h3{font-size:16px;margin:12px 5px 6px}
+.price{font-size:18px}
+.buy-btn{padding:10px 15px;font-size:14px}
+.order-section{margin:10px 12px 45px;padding:25px 17px}
+}
+@media(max-width:390px){.products{grid-template-columns:1fr}.product-card img{height:280px}}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PunjabiJutti</h1>
+    <p>Traditional • Stylish • Handmade Punjabi Jutti</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home" class="hero">
+
+    <h2>Step Into Punjabi Elegance</h2>
+    <p>Discover handcrafted Punjabi Juttis designed to bring traditional artistry and modern style to every occasion.</p>
+    <span class="tagline">✨ Handmade • Elegant • Comfortable</span>
+    <div style="margin-top:12px;color:#8b1227;font-weight:700">👆 Click any jutti image to order</div>
+
+</section>
+
+<section id="products" class="products">
+
+    <div class="product-card">
+        <img src="images/jutti1.jpg" alt="Punjabi Jutti worn on feet - Collection 1" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 1</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti2.jpg" alt="Punjabi Jutti worn on feet - Collection 2" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 2</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti3.jpg" alt="Punjabi Jutti worn on feet - Collection 3" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 3</h3>
+        <p class="price">₹1199</p>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti4.jpg" alt="Punjabi Jutti worn on feet - Collection 4" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 4</h3>
+        <p class="price">₹1299</p>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti1.jpg" alt="Punjabi Jutti worn on feet - Collection 5" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 5</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti2.jpg" alt="Punjabi Jutti worn on feet - Collection 6" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 6</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti3.jpg" alt="Punjabi Jutti worn on feet - Collection 7" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 7</h3>
+        <p class="price">₹1199</p>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti4.jpg" alt="Punjabi Jutti worn on feet - Collection 8" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 8</h3>
+        <p class="price">₹1299</p>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti1.jpg" alt="Punjabi Jutti worn on feet - Collection 9" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 9</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti2.jpg" alt="Punjabi Jutti worn on feet - Collection 10" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 10</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti3.jpg" alt="Punjabi Jutti worn on feet - Collection 11" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 11</h3>
+        <p class="price">₹1199</p>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti4.jpg" alt="Punjabi Jutti worn on feet - Collection 12" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 12</h3>
+        <p class="price">₹1299</p>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti1.jpg" alt="Punjabi Jutti worn on feet - Collection 13" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 13</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti2.jpg" alt="Punjabi Jutti worn on feet - Collection 14" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 14</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="images/jutti3.jpg" alt="Punjabi Jutti worn on feet - Collection 15" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 15</h3>
+        <p class="price">₹1199</p>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
+    </div>
+
+</section>
+
+
+<section id="order" class="order-section">
+
+    <h2>Place Your Order</h2>
+
+    <div class="selected-product">
+
+        Selected Product:
+
+        <strong id="selectedProduct">
+            Please select a product
+        </strong>
+
+    </div>
+
+
+    <label for="productName">
+        Product
+    </label>
+
+    <select id="productName" onchange="updatePrice()">
+
+        <option value="">
+            -- Select Product --
+        </option>
+
+        <option value="Traditional Punjabi Jutti">
+            Traditional Punjabi Jutti - ₹999
+        </option>
+
+        <option value="Embroidered Punjabi Jutti">
+            Embroidered Punjabi Jutti - ₹1099
+        </option>
+
+        <option value="Designer Punjabi Jutti">
+            Designer Punjabi Jutti - ₹1199
+        </option>
+
+        <option value="Wedding Punjabi Jutti">
+            Wedding Punjabi Jutti - ₹1299
+        </option>
+
+    </select>
+
+
+    <label for="size">
+        Size
+    </label>
+
+    <select id="size">
+
+        <option value="">
+            -- Select Size --
+        </option>
+
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+
+    </select>
+
+
+    <label for="quantity">
+        Quantity
+    </label>
+
+    <select id="quantity" onchange="updateTotal()">
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+    </select>
+
+
+    <label for="customerName">
+        Customer Name
+    </label>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Enter your full name"
+    >
+
+
+    <label for="mobile">
+        Mobile Number
+    </label>
+
+    <input
+        type="tel"
+        id="mobile"
+        placeholder="Enter 10 digit mobile number"
+        maxlength="10"
+        inputmode="numeric"
+    >
+
+
+    <label for="address">
+        Delivery Address
+    </label>
+
+    <textarea
+        id="address"
+        placeholder="Enter complete delivery address"
+    ></textarea>
+
+
+    <div class="summary">
+
+        <div class="summary-row">
+
+            <span>
+                Price per pair:
+            </span>
+
+            <strong>
+                ₹<span id="displayPrice">0</span>
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Quantity:
+            </span>
+
+            <strong id="displayQuantity">
+                1
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row grand-total">
+
+            <span>
+                Total:
+            </span>
+
+            <span>
+                ₹<span id="displayTotal">0</span>
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="placeOrderButton"
+        class="place-order"
+        onclick="placeOrder()">
+
+        Place Order
+
+    </button>
+
+
+    <div
+        id="message"
+        class="message">
+    </div>
+
+
+    <a
+        id="whatsappButton"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener">
+
+        Send Order Details on WhatsApp
+
+    </a>
+
+</section>
+
+
+<section id="contact" class="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>
+        For Punjabi Jutti orders and enquiries,
+        please contact us.
+    </p>
+
+</section>
+
+
+<footer>
+
+    © 2026 PunjabiJutti. All Rights Reserved.
+
+</footer>
+
+
+<script type="module">
+
+/* =====================================================
+   SUPABASE CONNECTION
+   ===================================================== */
+
+import {
+    createClient
+}
+from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+const SUPABASE_URL =
+"https://qgeuqzaymbzzmymqtsoj.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_FSTxrJY2dLbswu-z97XTMg_-SV-7-Bt";
+
+
+const supabase =
+createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth:{
+            persistSession:false,
+            autoRefreshToken:false,
+            detectSessionInUrl:false
+        }
+    }
+);
+
+
+/* =====================================================
+   PRODUCT PRICES
+   ===================================================== */
+
+const prices = {
+
+    "Traditional Punjabi Jutti":999,
+
+    "Embroidered Punjabi Jutti":1099,
+
+    "Designer Punjabi Jutti":1199,
+
+    "Wedding Punjabi Jutti":1299
+
+};
+
+
+/* =====================================================
+   SELECT PRODUCT
+   ===================================================== */
+
+window.selectProduct =
+function(productName){
+
+    document
+    .getElementById("productName")
+    .value = productName;
+
+    document
+    .getElementById("selectedProduct")
+    .textContent = productName;
+
+    updatePrice();
+
+    document
+    .getElementById("order")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+
+/* =====================================================
+   UPDATE PRICE
+   ===================================================== */
+
+window.updatePrice =
+function(){
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    document
+    .getElementById("selectedProduct")
+    .textContent =
+    product || "Please select a product";
+
+
+    document
+    .getElementById("displayPrice")
+    .textContent = price;
+
+
+    updateTotal();
+
+};
+
+
+/* =====================================================
+   UPDATE TOTAL
+   ===================================================== */
+
+window.updateTotal =
+function(){
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
+
+
+    document
+    .getElementById("displayQuantity")
+    .textContent =
+    quantity;
+
+
+    document
+    .getElementById("displayTotal")
+    .textContent =
+    total;
+
+};
+
+
+/* =====================================================
+   PLACE ORDER
+   ===================================================== */
+
+window.placeOrder =
+async function(){
+
+    const button =
+    document
+    .getElementById("placeOrderButton");
+
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const size =
+    document
+    .getElementById("size")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const customerName =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+    const mobile =
+    document
+    .getElementById("mobile")
+    .value
+    .trim();
+
+
+    const address =
+    document
+    .getElementById("address")
+    .value
+    .trim();
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
 
 
     /* VALIDATION */
 
-    if (!product) {
+    if(!product){
 
         showMessage(
             "Please select a product.",
@@ -14,7 +627,7 @@
     }
 
 
-    if (!size) {
+    if(!size){
 
         showMessage(
             "Please select shoe size.",
@@ -25,7 +638,7 @@
     }
 
 
-    if (!customerName) {
+    if(!customerName){
 
         showMessage(
             "Please enter your name.",
@@ -36,7 +649,7 @@
     }
 
 
-    if (!/^[0-9]{10}$/.test(mobile)) {
+    if(!/^[0-9]{10}$/.test(mobile)){
 
         showMessage(
             "Please enter a valid 10 digit mobile number.",
@@ -47,7 +660,7 @@
     }
 
 
-    if (!address) {
+    if(!address){
 
         showMessage(
             "Please enter your complete delivery address.",
@@ -58,82 +671,122 @@
     }
 
 
+    if(price <= 0){
+
+        showMessage(
+            "Product price is not available.",
+            false
+        );
+
+        return;
+    }
+
+
+    /* DISABLE BUTTON */
+
     button.disabled = true;
 
     button.textContent =
-        "Saving Order...";
+    "Saving Order...";
+
+
+    showMessage(
+        "Please wait... Saving your order.",
+        true
+    );
 
 
     /* ORDER DATA */
 
     const orderData = {
 
-        customer_name: customerName,
+        customer_name:customerName,
 
-        mobile: mobile,
+        mobile:mobile,
 
-        address: address,
+        address:address,
 
-        product_name: product,
+        product_name:product,
 
-        size: size,
+        size:size,
 
-        quantity: quantity,
+        quantity:quantity,
 
-        price: price,
+        price:price,
 
-        total: total
+        total:total
 
     };
 
 
-    /* SAVE TO SUPABASE */
-
-    try {
-
-        const { error } =
-            await supabase
-            .from("orders")
-            .insert([orderData]);
+    console.log(
+        "Sending order:",
+        orderData
+    );
 
 
-        if (error) {
+    try{
+
+        /* =================================================
+           SUPABASE INSERT
+           ================================================= */
+
+        const result =
+        await supabase
+        .from("orders")
+        .insert([orderData]);
+
+
+        console.log(
+            "Supabase result:",
+            result
+        );
+
+
+        if(result.error){
 
             console.error(
-                "Supabase error:",
-                error
+                "SUPABASE ERROR:",
+                result.error
             );
+
 
             showMessage(
                 "Order could not be saved: " +
-                error.message,
+                result.error.message,
                 false
             );
+
 
             button.disabled = false;
 
             button.textContent =
-                "Place Order";
+            "Place Order";
 
             return;
         }
 
 
-        /* SUCCESS */
+        /* =================================================
+           SUCCESS
+           ================================================= */
 
         showMessage(
-            "Order saved successfully!",
+            "🎉 Order saved successfully!",
             true
         );
 
 
         button.textContent =
-            "Order Placed ✓";
+        "Order Placed ✓";
 
 
-        /* WHATSAPP MESSAGE */
+        /* =================================================
+           WHATSAPP
+           ================================================= */
 
         const whatsappMessage =
+
 `Hello PunjabiJutti,
 
 I want to place an order.
@@ -154,83 +807,101 @@ Thank you.`;
 
         /*
         IMPORTANT:
-        Replace 919999999999
-        with your actual WhatsApp number.
+        CHANGE THIS NUMBER TO YOUR BUSINESS
+        WHATSAPP NUMBER.
 
         Example:
-        9876543210 becomes
+        9876543210
+
+        becomes:
+
         919876543210
         */
 
         const businessWhatsApp =
-            "919999999999";
+        "919999999999";
 
 
         const whatsappURL =
-            "https://wa.me/" +
-            businessWhatsApp +
-            "?text=" +
-            encodeURIComponent(
-                whatsappMessage
-            );
+        "https://wa.me/" +
+        businessWhatsApp +
+        "?text=" +
+        encodeURIComponent(
+            whatsappMessage
+        );
 
 
         const whatsappButton =
-            document.getElementById(
-                "whatsappButton"
-            );
+        document
+        .getElementById(
+            "whatsappButton"
+        );
 
 
         whatsappButton.href =
-            whatsappURL;
+        whatsappURL;
 
 
         whatsappButton.style.display =
-            "block";
+        "block";
+
 
     }
 
-
-    catch (error) {
+    catch(error){
 
         console.error(
-            "Connection error:",
+            "CONNECTION ERROR:",
             error
         );
 
+
         showMessage(
+
             "Connection error: " +
             error.message,
+
             false
+
         );
+
 
         button.disabled = false;
 
         button.textContent =
-            "Place Order";
+        "Place Order";
 
     }
 
 };
 
 
-/* MESSAGE */
+/* =====================================================
+   MESSAGE
+   ===================================================== */
 
-function showMessage(text, success) {
+function showMessage(
+    text,
+    success
+){
 
     const message =
-        document.getElementById("message");
+    document
+    .getElementById("message");
+
 
     message.textContent =
-        text;
+    text;
+
 
     message.style.display =
-        "block";
+    "block";
+
 
     message.className =
-        success
-        ? "message success"
-        : "message error";
+    success
+    ? "message success"
+    : "message error";
 
 }
 
