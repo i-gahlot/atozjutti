@@ -4,532 +4,225 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PunjabiJutti Admin Dashboard</title>
+<title>AtoZ Jutti - Premium Punjabi Jutti</title>
+
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:#fbf7f1;color:#2d2020}
+a{text-decoration:none}
+.topbar{background:#231414;color:#fff;text-align:center;padding:8px 14px;font-size:13px;letter-spacing:.4px}
+header{background:#fffaf5;color:#2b1717;padding:18px 5%;border-bottom:1px solid #eadfd4;position:sticky;top:0;z-index:80}
+.header-inner{max-width:1280px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{font-family:Georgia,serif;font-size:30px;font-weight:800;color:#7c1727}
+.brand small{display:block;font-family:Inter,Arial;font-size:10px;letter-spacing:3px;color:#8a746e;text-transform:uppercase;margin-top:2px}
+.main-nav{display:flex;gap:28px;align-items:center}
+.main-nav a{color:#3d2929;font-weight:700;font-size:14px}
+.main-nav a:hover{color:#a51d38}
+.header-cta{background:#8c172b;color:#fff;padding:11px 18px;border-radius:25px;font-weight:800;font-size:13px}
+.hero{min-height:560px;display:flex;align-items:center;background:linear-gradient(100deg,#f4e7d8,#fffaf5 58%,#ead6c6);padding:70px 6%}
+.hero-inner{max-width:1280px;width:100%;margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px}
+.hero-copy .eyebrow{color:#9a2034;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,72px);line-height:1.02;margin:15px 0;color:#3b2020}
+.hero h1 span{color:#941b31}
+.hero p{font-size:17px;line-height:1.8;color:#705f5a;max-width:570px}
+.hero-buttons{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.primary-btn,.secondary-btn{padding:14px 24px;border-radius:30px;font-weight:800;display:inline-block}
+.primary-btn{background:#8c172b;color:#fff}
+.secondary-btn{border:1px solid #b9a298;color:#5b3b36;background:#fff8f0}
+.hero-art{min-height:410px;border-radius:24px;background:linear-gradient(135deg,#ead4bf,#c89a78);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 18px 45px rgba(75,40,30,.18)}
+.hero-art .art-placeholder{text-align:center;color:#fff;padding:30px;font-family:Georgia,serif;font-size:28px}
+.section{max-width:1280px;margin:auto;padding:70px 5%}
+.section-head{text-align:center;margin-bottom:35px}
+.section-head .eyebrow{color:#a01d35;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.section-head h2{font-family:Georgia,serif;font-size:38px;margin:8px 0;color:#3a2020}
+.section-head p{color:#786864;max-width:650px;margin:auto;line-height:1.7}
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.category{min-height:210px;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(135deg,#d8b69c,#8c5b48);color:#fff;box-shadow:0 10px 28px rgba(60,35,25,.12)}
+.category:nth-child(2){background:linear-gradient(135deg,#cba98e,#9c6a4f)}
+.category:nth-child(3){background:linear-gradient(135deg,#d9c1aa,#8e3e4f)}
+.category h3{font-family:Georgia,serif;font-size:27px;margin:0 0 6px}
+.category p{margin:0 0 15px;opacity:.92}
+.category a{width:max-content;background:#fff;color:#5c2525;padding:9px 15px;border-radius:22px;font-weight:800;font-size:13px}
+.products{max-width:1280px;margin:auto;padding:15px 5% 75px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product-card{position:relative;background:#fff;border:1px solid #eee0d6;border-radius:16px;overflow:hidden;box-shadow:0 7px 24px rgba(73,32,32,.08);transition:.25s;text-align:left;padding-bottom:17px}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 15px 34px rgba(73,32,32,.15)}
+.product-card img{width:100%;height:285px;object-fit:cover;display:block;background:#f0e6dc;cursor:pointer}
+.product-info{padding:14px 15px 0}
+.product-card h3{margin:0 0 7px;color:#4b2929;font-size:17px}
+.price{font-size:19px;font-weight:900;color:#86162a}
+.buy-btn{margin-top:12px;width:100%;background:#8c172b;color:#fff;border:none;padding:11px 18px;border-radius:7px;cursor:pointer;font-size:14px;font-weight:800}
+.badge{position:absolute;top:12px;left:12px;background:#fff;padding:6px 9px;border-radius:15px;color:#8d1b31;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.feature-strip{background:#8b182d;color:#fff}
+.features{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:35px 5%}
+.feature{text-align:center}.feature strong{display:block;font-size:15px;margin-top:8px}.feature span{font-size:12px;opacity:.82}
+.order-section{max-width:760px;margin:20px auto 75px;padding:35px 25px;background:#fff;border-radius:18px;box-shadow:0 12px 35px rgba(73,32,32,.12);border:1px solid #eadfd7}
+.order-section h2{text-align:center;color:#8b1227;font-family:Georgia,serif;font-size:32px}
+label{display:block;margin-top:16px;font-weight:700;color:#493535}
+input,select,textarea{width:100%;padding:13px;margin-top:7px;border:1px solid #d9c8bf;border-radius:9px;font-size:16px;background:#fffdfb}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#a91d35;box-shadow:0 0 0 3px rgba(169,29,53,.1)}
+textarea{min-height:105px;resize:vertical}
+.selected-product{background:#fff3d7;padding:14px;border-radius:9px;margin-bottom:16px;border-left:4px solid #d49a38}
+.summary{margin-top:22px;border-top:1px solid #eadbd3;padding-top:15px}
+.summary-row{display:flex;justify-content:space-between;padding:9px 0}
+.grand-total{font-size:23px;font-weight:800;color:#8b1227;border-top:2px solid #8b1227;margin-top:8px;padding-top:13px}
+.place-order{width:100%;margin-top:22px;padding:15px;background:#087b43;color:#fff;border:none;border-radius:9px;font-size:18px;font-weight:800;cursor:pointer}
+.message{display:none;margin-top:20px;padding:15px;border-radius:9px;text-align:center;font-weight:700}
+.message.success{background:#dff4e5;color:#126132}.message.error{background:#fde1e3;color:#8a1c27}
+.whatsapp{display:none;margin-top:15px;background:#25D366;color:white;text-align:center;padding:14px;border-radius:9px;font-weight:800}
+.contact{text-align:center;padding:65px 20px;background:#f0e4d8}
+.contact h2{font-family:Georgia,serif;color:#7f1728;font-size:34px}
+footer{background:#241719;color:#fff;text-align:center;padding:28px}
+@media(max-width:900px){
+ .main-nav{display:none}.hero{padding:50px 5%}.hero-inner{grid-template-columns:1fr}.hero-art{min-height:300px}
+ .products{grid-template-columns:repeat(3,1fr)}.category-grid{grid-template-columns:1fr 1fr}.features{grid-template-columns:repeat(2,1fr)}
 }
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #222;
+@media(max-width:600px){
+ header{padding:15px 4%}.brand{font-size:25px}.header-cta{padding:9px 13px}
+ .hero{min-height:auto;padding:48px 5%}.hero h1{font-size:45px}.hero-art{min-height:250px}
+ .category-grid{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:10px 12px 55px}
+ .product-card img{height:220px}.product-info{padding:11px}.product-card h3{font-size:15px}.price{font-size:17px}.buy-btn{padding:10px 8px;font-size:13px}
+ .features{grid-template-columns:repeat(2,1fr);padding:28px 5%}.order-section{margin:10px 12px 50px;padding:25px 17px}
 }
-
-/* =========================
-   LOGIN
-========================= */
-
-#loginPage {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #8b0000;
-    padding: 20px;
-}
-
-.login-box {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
-}
-
-.login-box h1 {
-    text-align: center;
-    color: #8b0000;
-    margin-top: 0;
-}
-
-.login-box p {
-    text-align: center;
-    color: #666;
-}
-
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-}
-
-button {
-    cursor: pointer;
-}
-
-.login-button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    background: #8b0000;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.login-button:hover {
-    background: #650000;
-}
-
-.login-message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 6px;
-    display: none;
-    font-weight: bold;
-}
-
-/* =========================
-   DASHBOARD
-========================= */
-
-#dashboardPage {
-    display: none;
-}
-
-.header {
-    background: #8b0000;
-    color: white;
-    padding: 18px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 25px;
-}
-
-.header-buttons button {
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-left: 5px;
-    font-weight: bold;
-}
-
-.refresh-button {
-    background: #198754;
-    color: white;
-}
-
-.logout-button {
-    background: white;
-    color: #8b0000;
-}
-
-.container {
-    max-width: 1500px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.stat-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.stat-box h3 {
-    margin: 0;
-    color: #666;
-    font-size: 15px;
-}
-
-.stat-box .number {
-    margin-top: 8px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #8b0000;
-}
-
-/* =========================
-   ORDERS
-========================= */
-
-.orders-box {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-}
-
-.orders-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.orders-top h2 {
-    margin: 0;
-    color: #8b0000;
-}
-
-.status-message {
-    padding: 12px;
-    margin-bottom: 15px;
-    background: #f5f5f5;
-    border-radius: 6px;
-    display: none;
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1100px;
-}
-
-th {
-    background: #8b0000;
-    color: white;
-    padding: 12px 8px;
-    text-align: left;
-    white-space: nowrap;
-}
-
-td {
-    border-bottom: 1px solid #ddd;
-    padding: 11px 8px;
-    vertical-align: top;
-}
-
-tr:hover {
-    background: #fafafa;
-}
-
-.no-orders {
-    text-align: center;
-    padding: 35px;
-    color: #777;
-    font-size: 17px;
-}
-
-/* =========================
-   WHATSAPP
-========================= */
-
-.whatsapp-button {
-    display: inline-block;
-    background: #25D366;
-    color: white;
-    padding: 8px 11px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.whatsapp-button:hover {
-    background: #1da851;
-}
-
-/* =========================
-   DELETE
-========================= */
-
-.delete-button {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 5px;
-}
-
-.delete-button:hover {
-    background: #bb2d3b;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px) {
-
-    .header {
-        align-items: flex-start;
-    }
-
-    .header-buttons {
-        width: 100%;
-    }
-
-    .header-buttons button {
-        margin: 5px 5px 0 0;
-    }
-
-    .container {
-        padding: 10px;
-    }
-
-    .orders-box {
-        padding: 12px;
-    }
-}
-
+@media(max-width:390px){.products{grid-template-columns:1fr}.product-card img{height:280px}}
 </style>
+
 </head>
 
+
 <body>
+<div class="topbar">FREE SHIPPING ON SELECTED ORDERS • HANDCRAFTED PUNJABI JUTTI</div>
 
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#home">AtoZ Jutti<small>Traditional • Stylish • Handmade</small></a>
+    <nav class="main-nav">
+      <a href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#products">Best Sellers</a>
+      <a href="#new">New Arrivals</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#products">Shop Now</a>
+  </div>
+</header>
 
-<div id="loginPage">
-
-    <div class="login-box">
-
-        <h1>PunjabiJutti</h1>
-
-        <p>Admin Login</p>
-
-        <label for="email">Admin Email</label>
-
-        <input
-            type="email"
-            id="email"
-            placeholder="Enter admin email"
-            autocomplete="username"
-        >
-
-        <label for="password">Password</label>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            autocomplete="current-password"
-        >
-
-        <button
-            class="login-button"
-            id="loginButton"
-            onclick="login()"
-        >
-            Login
-        </button>
-
-        <div
-            id="loginMessage"
-            class="login-message"
-        ></div>
-
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">AtoZ Jutti • Punjabi Heritage</div>
+      <h1>Tradition made <span>beautiful.</span></h1>
+      <p>Discover elegant Punjabi Juttis created for festive occasions, weddings and everyday style. Traditional character with a modern shopping experience.</p>
+      <div class="hero-buttons">
+        <a class="primary-btn" href="#products">Shop Collection</a>
+        <a class="secondary-btn" href="#categories">Explore Styles</a>
+      </div>
     </div>
+    <div class="hero-art">
+      <div class="art-placeholder">Your Premium Jutti<br>Collection</div>
+    </div>
+  </div>
+</section>
 
+<section id="categories" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Shop by collection</div>
+    <h2>Find your perfect pair</h2>
+    <p>Explore traditional, embroidered, designer and wedding styles from the AtoZ Jutti collection.</p>
+  </div>
+  <div class="category-grid">
+    <div class="category"><h3>Traditional</h3><p>Classic Punjabi elegance</p><a href="#products">Shop Now</a></div>
+    <div class="category"><h3>Embroidered</h3><p>Rich handcrafted details</p><a href="#products">Shop Now</a></div>
+    <div class="category"><h3>Wedding</h3><p>Celebrate in style</p><a href="#products">Shop Now</a></div>
+  </div>
+</section>
+
+<div class="feature-strip">
+  <div class="features">
+    <div class="feature">✦<strong>Handcrafted Style</strong><span>Inspired by Punjabi tradition</span></div>
+    <div class="feature">♡<strong>Comfort First</strong><span>Designed for easy wear</span></div>
+    <div class="feature">◇<strong>Premium Quality</strong><span>Carefully selected designs</span></div>
+    <div class="feature">✓<strong>Easy Ordering</strong><span>Simple online order process</span></div>
+  </div>
 </div>
 
-
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
-
-<div id="dashboardPage">
-
-    <div class="header">
-
-        <h1>PunjabiJutti Admin Dashboard</h1>
-
-        <div class="header-buttons">
-
-            <button
-                class="refresh-button"
-                onclick="loadOrders()"
-            >
-                🔄 Refresh Orders
-            </button>
-
-            <button
-                class="logout-button"
-                onclick="logout()"
-            >
-                Logout
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="container">
-
-        <!-- STATS -->
-
-        <div class="stats">
-
-            <div class="stat-box">
-
-                <h3>Total Orders</h3>
-
-                <div
-                    class="number"
-                    id="totalOrders"
-                >
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="stat-box">
-
-                <h3>Total Quantity</h3>
-
-                <div
-                    class="number"
-                    id="totalQuantity"
-                >
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="stat-box">
-
-                <h3>Total Sales</h3>
-
-                <div
-                    class="number"
-                    id="totalSales"
-                >
-                    ₹0
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ORDERS -->
-
-        <div class="orders-box">
-
-            <div class="orders-top">
-
-                <h2>Customer Orders</h2>
-
-                <div id="lastUpdated"></div>
-
-            </div>
-
-
-            <div
-                id="statusMessage"
-                class="status-message"
-            ></div>
-
-
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Order ID</th>
-
-                            <th>Date</th>
-
-                            <th>Customer Name</th>
-
-                            <th>Mobile</th>
-
-                            <th>Address</th>
-
-                            <th>Product</th>
-
-                            <th>Size</th>
-
-                            <th>Qty</th>
-
-                            <th>Price</th>
-
-                            <th>Total</th>
-
-                            <th>WhatsApp</th>
-
-                            <th>Delete</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="ordersTableBody">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
+<section id="products" class="section" style="padding-bottom:15px">
+  <div class="section-head">
+    <div class="eyebrow">AtoZ favourites</div>
+    <h2>Best Sellers</h2>
+    <p>Our featured Punjabi Juttis. Click a product to order.</p>
+  </div>
+</section>
+
+<section class="products">
+  <div class="product-card"><span class="badge">Best Seller</span><img src="jutti1.jpg" alt="Traditional Punjabi Jutti 1" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')"><div class="product-info"><h3>Traditional Punjabi Jutti 1</h3><div class="price">₹999</div><button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><span class="badge">Popular</span><img src="jutti2.jpg" alt="Embroidered Punjabi Jutti 2" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')"><div class="product-info"><h3>Embroidered Punjabi Jutti 2</h3><div class="price">₹1099</div><button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><span class="badge">Trending</span><img src="jutti3.jpg" alt="Designer Punjabi Jutti 3" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')"><div class="product-info"><h3>Designer Punjabi Jutti 3</h3><div class="price">₹1199</div><button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><span class="badge">Wedding</span><img src="jutti4.jpg" alt="Wedding Punjabi Jutti 4" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')"><div class="product-info"><h3>Wedding Punjabi Jutti 4</h3><div class="price">₹1299</div><button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti5.jpg" alt="Traditional Punjabi Jutti 5" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')"><div class="product-info"><h3>Traditional Punjabi Jutti 5</h3><div class="price">₹999</div><button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti6.jpg" alt="Embroidered Punjabi Jutti 6" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')"><div class="product-info"><h3>Embroidered Punjabi Jutti 6</h3><div class="price">₹1099</div><button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti7.jpg" alt="Designer Punjabi Jutti 7" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')"><div class="product-info"><h3>Designer Punjabi Jutti 7</h3><div class="price">₹1199</div><button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti8.jpg" alt="Wedding Punjabi Jutti 8" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')"><div class="product-info"><h3>Wedding Punjabi Jutti 8</h3><div class="price">₹1299</div><button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti9.jpg" alt="Traditional Punjabi Jutti 9" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')"><div class="product-info"><h3>Traditional Punjabi Jutti 9</h3><div class="price">₹999</div><button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti10.jpg" alt="Embroidered Punjabi Jutti 10" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')"><div class="product-info"><h3>Embroidered Punjabi Jutti 10</h3><div class="price">₹1099</div><button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti11.jpg" alt="Designer Punjabi Jutti 11" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')"><div class="product-info"><h3>Designer Punjabi Jutti 11</h3><div class="price">₹1199</div><button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti12.jpg" alt="Wedding Punjabi Jutti 12" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')"><div class="product-info"><h3>Wedding Punjabi Jutti 12</h3><div class="price">₹1299</div><button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti13.jpg" alt="Traditional Punjabi Jutti 13" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')"><div class="product-info"><h3>Traditional Punjabi Jutti 13</h3><div class="price">₹999</div><button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti14.jpg" alt="Embroidered Punjabi Jutti 14" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')"><div class="product-info"><h3>Embroidered Punjabi Jutti 14</h3><div class="price">₹1099</div><button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button></div></div>
+  <div class="product-card"><img src="jutti15.jpg" alt="Designer Punjabi Jutti 15" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')"><div class="product-info"><h3>Designer Punjabi Jutti 15</h3><div class="price">₹1199</div><button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button></div></div>
+</section>
+
+<section id="new" class="section" style="padding-top:20px">
+  <div class="section-head">
+    <div class="eyebrow">Fresh styles</div>
+    <h2>New Arrivals</h2>
+    <p>More designs can be added here anytime by uploading a new jutti image and adding its product card.</p>
+  </div>
+</section>
+
+<section id="order" class="order-section">
+  <h2>Place Your Order</h2>
+  <div class="selected-product">Selected Product: <strong id="selectedProduct">Please select a product</strong></div>
+  <label for="productName">Product</label>
+  <select id="productName" onchange="updatePrice()">
+    <option value="">-- Select Product --</option>
+    <option value="Traditional Punjabi Jutti">Traditional Punjabi Jutti - ₹999</option>
+    <option value="Embroidered Punjabi Jutti">Embroidered Punjabi Jutti - ₹1099</option>
+    <option value="Designer Punjabi Jutti">Designer Punjabi Jutti - ₹1199</option>
+    <option value="Wedding Punjabi Jutti">Wedding Punjabi Jutti - ₹1299</option>
+  </select>
+  <label for="size">Size</label>
+  <select id="size"><option value="">-- Select Size --</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+  <label for="quantity">Quantity</label>
+  <select id="quantity" onchange="updateTotal()"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+  <label for="customerName">Customer Name</label><input type="text" id="customerName" placeholder="Enter your full name">
+  <label for="mobile">Mobile Number</label><input type="tel" id="mobile" placeholder="Enter 10 digit mobile number" maxlength="10" inputmode="numeric">
+  <label for="address">Delivery Address</label><textarea id="address" placeholder="Enter complete delivery address"></textarea>
+  <div class="summary"><div class="summary-row"><span>Price per pair:</span><strong>₹<span id="displayPrice">0</span></strong></div><div class="summary-row"><span>Quantity:</span><strong id="displayQuantity">1</strong></div><div class="summary-row grand-total"><span>Total:</span><span>₹<span id="displayTotal">0</span></span></div></div>
+  <button id="placeOrderButton" class="place-order" onclick="placeOrder()">Place Order</button>
+  <div id="message" class="message"></div>
+  <a id="whatsappButton" class="whatsapp" target="_blank" rel="noopener">Send Order Details on WhatsApp</a>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Welcome to AtoZ Jutti</h2>
+  <p>For Punjabi Jutti orders and enquiries, please contact us at igahlot@yahoo.com.</p>
+</section>
+
+<footer>© 2026 AtoZ Jutti. All Rights Reserved.</footer>
 
 <script type="module">
+
+/* =====================================================
+   SUPABASE CONNECTION
+   ===================================================== */
 
 import {
     createClient
 }
 from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-
-/* =====================================================
-   SUPABASE CONNECTION
-===================================================== */
 
 const SUPABASE_URL =
 "https://qgeuqzaymbzzmymqtsoj.supabase.co";
@@ -539,868 +232,490 @@ const SUPABASE_KEY =
 "sb_publishable_FSTxrJY2dLbswu-z97XTMg_-SV-7-Bt";
 
 
-const supabase = createClient(
+const supabase =
+createClient(
     SUPABASE_URL,
     SUPABASE_KEY,
     {
-        auth: {
-            persistSession: true,
-            autoRefreshToken: true,
-            detectSessionInUrl: true
+        auth:{
+            persistSession:false,
+            autoRefreshToken:false,
+            detectSessionInUrl:false
         }
     }
 );
 
 
 /* =====================================================
-   ELEMENTS
-===================================================== */
+   PRODUCT PRICES
+   ===================================================== */
 
-const loginPage =
-document.getElementById("loginPage");
+const prices = {
 
-const dashboardPage =
-document.getElementById("dashboardPage");
+    "Traditional Punjabi Jutti":999,
 
-const loginMessage =
-document.getElementById("loginMessage");
+    "Embroidered Punjabi Jutti":1099,
 
-const statusMessage =
-document.getElementById("statusMessage");
+    "Designer Punjabi Jutti":1199,
 
-const ordersTableBody =
-document.getElementById("ordersTableBody");
+    "Wedding Punjabi Jutti":1299
+
+};
 
 
 /* =====================================================
-   LOGIN MESSAGE
-===================================================== */
+   SELECT PRODUCT
+   ===================================================== */
 
-function showLoginMessage(text, success = false) {
+window.selectProduct =
+function(productName){
 
-    loginMessage.textContent = text;
+    document
+    .getElementById("productName")
+    .value = productName;
 
-    loginMessage.style.display = "block";
+    document
+    .getElementById("selectedProduct")
+    .textContent = productName;
 
-    if (success) {
+    updatePrice();
 
-        loginMessage.style.background = "#d1e7dd";
-        loginMessage.style.color = "#0f5132";
-
-    } else {
-
-        loginMessage.style.background = "#f8d7da";
-        loginMessage.style.color = "#842029";
-
-    }
-
-}
-
-
-/* =====================================================
-   STATUS MESSAGE
-===================================================== */
-
-function showStatus(text) {
-
-    statusMessage.textContent = text;
-
-    statusMessage.style.display = "block";
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-window.login = async function() {
-
-    const email =
-    document.getElementById("email").value.trim();
-
-    const password =
-    document.getElementById("password").value;
-
-
-    if (!email) {
-
-        showLoginMessage(
-            "Please enter your email."
-        );
-
-        return;
-    }
-
-
-    if (!password) {
-
-        showLoginMessage(
-            "Please enter your password."
-        );
-
-        return;
-    }
-
-
-    const loginButton =
-    document.getElementById("loginButton");
-
-
-    loginButton.disabled = true;
-
-    loginButton.textContent = "Logging in...";
-
-
-    const {
-        data,
-        error
-    } = await supabase.auth.signInWithPassword({
-
-        email: email,
-
-        password: password
-
+    document
+    .getElementById("order")
+    .scrollIntoView({
+        behavior:"smooth"
     });
 
+};
 
-    if (error) {
 
-        console.error(
-            "LOGIN ERROR:",
-            error
+/* =====================================================
+   UPDATE PRICE
+   ===================================================== */
+
+window.updatePrice =
+function(){
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    document
+    .getElementById("selectedProduct")
+    .textContent =
+    product || "Please select a product";
+
+
+    document
+    .getElementById("displayPrice")
+    .textContent = price;
+
+
+    updateTotal();
+
+};
+
+
+/* =====================================================
+   UPDATE TOTAL
+   ===================================================== */
+
+window.updateTotal =
+function(){
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
+
+
+    document
+    .getElementById("displayQuantity")
+    .textContent =
+    quantity;
+
+
+    document
+    .getElementById("displayTotal")
+    .textContent =
+    total;
+
+};
+
+
+/* =====================================================
+   PLACE ORDER
+   ===================================================== */
+
+window.placeOrder =
+async function(){
+
+    const button =
+    document
+    .getElementById("placeOrderButton");
+
+
+    const product =
+    document
+    .getElementById("productName")
+    .value;
+
+
+    const size =
+    document
+    .getElementById("size")
+    .value;
+
+
+    const quantity =
+    Number(
+        document
+        .getElementById("quantity")
+        .value
+    ) || 1;
+
+
+    const customerName =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+    const mobile =
+    document
+    .getElementById("mobile")
+    .value
+    .trim();
+
+
+    const address =
+    document
+    .getElementById("address")
+    .value
+    .trim();
+
+
+    const price =
+    prices[product] || 0;
+
+
+    const total =
+    price * quantity;
+
+
+    /* VALIDATION */
+
+    if(!product){
+
+        showMessage(
+            "Please select a product.",
+            false
         );
-
-        showLoginMessage(
-            "Login failed: " +
-            error.message
-        );
-
-        loginButton.disabled = false;
-
-        loginButton.textContent = "Login";
 
         return;
     }
 
 
-    console.log(
-        "LOGIN SUCCESS:",
-        data.user
-    );
+    if(!size){
+
+        showMessage(
+            "Please select shoe size.",
+            false
+        );
+
+        return;
+    }
 
 
-    showLoginMessage(
-        "Login successful.",
+    if(!customerName){
+
+        showMessage(
+            "Please enter your name.",
+            false
+        );
+
+        return;
+    }
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        showMessage(
+            "Please enter a valid 10 digit mobile number.",
+            false
+        );
+
+        return;
+    }
+
+
+    if(!address){
+
+        showMessage(
+            "Please enter your complete delivery address.",
+            false
+        );
+
+        return;
+    }
+
+
+    if(price <= 0){
+
+        showMessage(
+            "Product price is not available.",
+            false
+        );
+
+        return;
+    }
+
+
+    /* DISABLE BUTTON */
+
+    button.disabled = true;
+
+    button.textContent =
+    "Saving Order...";
+
+
+    showMessage(
+        "Please wait... Saving your order.",
         true
     );
 
 
-    setTimeout(() => {
+    /* ORDER DATA */
 
-        loginPage.style.display = "none";
+    const orderData = {
 
-        dashboardPage.style.display = "block";
+        customer_name:customerName,
 
-        loadOrders();
+        mobile:mobile,
 
-    }, 500);
+        address:address,
 
-};
+        product_name:product,
 
+        size:size,
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+        quantity:quantity,
 
-window.logout = async function() {
+        price:price,
 
-    await supabase.auth.signOut();
+        total:total
 
-    dashboardPage.style.display = "none";
-
-    loginPage.style.display = "flex";
-
-    document.getElementById("password").value = "";
-
-};
+    };
 
 
-/* =====================================================
-   CHECK EXISTING SESSION
-===================================================== */
-
-async function checkSession() {
-
-    const {
-        data,
-        error
-    } = await supabase.auth.getSession();
+    console.log(
+        "Sending order:",
+        orderData
+    );
 
 
-    if (error) {
+    try{
 
-        console.error(
-            "SESSION ERROR:",
-            error
-        );
+        /* =================================================
+           SUPABASE INSERT
+           ================================================= */
 
-        return;
-    }
+        const result =
+        await supabase
+        .from("orders")
+        .insert([orderData]);
 
-
-    if (data.session) {
 
         console.log(
-            "Existing session found."
-        );
-
-        loginPage.style.display = "none";
-
-        dashboardPage.style.display = "block";
-
-        loadOrders();
-
-    } else {
-
-        loginPage.style.display = "flex";
-
-        dashboardPage.style.display = "none";
-
-    }
-
-}
-
-
-/* =====================================================
-   LOAD ORDERS
-===================================================== */
-
-window.loadOrders = async function() {
-
-    console.log(
-        "Loading orders..."
-    );
-
-
-    showStatus(
-        "Loading orders from Supabase..."
-    );
-
-
-    ordersTableBody.innerHTML = "";
-
-
-    /* -------------------------------------------------
-       CHECK LOGIN SESSION
-    ------------------------------------------------- */
-
-    const {
-        data: sessionData,
-        error: sessionError
-    } = await supabase.auth.getSession();
-
-
-    if (sessionError) {
-
-        console.error(
-            "SESSION ERROR:",
-            sessionError
-        );
-
-        showStatus(
-            "Session error: " +
-            sessionError.message
-        );
-
-        return;
-    }
-
-
-    if (!sessionData.session) {
-
-        showStatus(
-            "You are not logged in. Please login again."
-        );
-
-        dashboardPage.style.display = "none";
-
-        loginPage.style.display = "flex";
-
-        return;
-    }
-
-
-    console.log(
-        "Authenticated as:",
-        sessionData.session.user.email
-    );
-
-
-    /* -------------------------------------------------
-       FETCH ORDERS
-    ------------------------------------------------- */
-
-    const {
-        data: orders,
-        error
-    } = await supabase
-
-        .from("orders")
-
-        .select("*")
-
-        .order("created_at", {
-            ascending: false
-        });
-
-
-    console.log(
-        "ORDERS RESPONSE:",
-        orders
-    );
-
-
-    console.log(
-        "ORDERS ERROR:",
-        error
-    );
-
-
-    /* -------------------------------------------------
-       ERROR
-    ------------------------------------------------- */
-
-    if (error) {
-
-        console.error(
-            "SUPABASE ORDERS ERROR:",
-            error
+            "Supabase result:",
+            result
         );
 
 
-        showStatus(
-            "Unable to load orders: " +
-            error.message
-        );
+        if(result.error){
 
+            console.error(
+                "SUPABASE ERROR:",
+                result.error
+            );
 
-        ordersTableBody.innerHTML = `
 
-            <tr>
+            showMessage(
+                "Order could not be saved: " +
+                result.error.message,
+                false
+            );
 
-                <td
-                    colspan="12"
-                    class="no-orders"
-                >
 
-                    ❌ Error loading orders.
+            button.disabled = false;
 
-                    <br><br>
+            button.textContent =
+            "Place Order";
 
-                    ${escapeHTML(error.message)}
-
-                </td>
-
-            </tr>
-
-        `;
-
-
-        return;
-    }
-
-
-    /* -------------------------------------------------
-       NO ORDERS
-    ------------------------------------------------- */
-
-    if (!orders || orders.length === 0) {
-
-        showStatus(
-            "No orders found."
-        );
-
-
-        ordersTableBody.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="12"
-                    class="no-orders"
-                >
-
-                    No orders found in the orders table.
-
-                </td>
-
-            </tr>
-
-        `;
-
-
-        updateStats([]);
-
-        return;
-    }
-
-
-    /* -------------------------------------------------
-       ORDERS FOUND
-    ------------------------------------------------- */
-
-    console.log(
-        "Number of orders:",
-        orders.length
-    );
-
-
-    showStatus(
-        orders.length +
-        " order(s) loaded successfully."
-    );
-
-
-    orders.forEach(order => {
-
-        addOrderRow(order);
-
-    });
-
-
-    updateStats(orders);
-
-
-    document.getElementById(
-        "lastUpdated"
-    ).textContent =
-        "Updated: " +
-        new Date().toLocaleString();
-
-};
-
-
-/* =====================================================
-   ADD ORDER ROW
-===================================================== */
-
-function addOrderRow(order) {
-
-    const row =
-    document.createElement("tr");
-
-
-    const orderId =
-    order.id ?? "";
-
-
-    const createdAt =
-    order.created_at
-        ? new Date(order.created_at).toLocaleString()
-        : "";
-
-
-    const customerName =
-    order.customer_name ?? "";
-
-
-    const mobile =
-    order.mobile ?? "";
-
-
-    const address =
-    order.address ?? "";
-
-
-    const productName =
-    order.product_name ?? "";
-
-
-    const size =
-    order.size ?? "";
-
-
-    const quantity =
-    Number(order.quantity ?? 0);
-
-
-    const price =
-    Number(order.price ?? 0);
-
-
-    const total =
-    Number(order.total ?? 0);
-
-
-    const whatsappNumber =
-    mobile.replace(/[^0-9]/g, "");
-
-
-    let whatsappURL = "#";
-
-
-    if (whatsappNumber) {
-
-        let formattedNumber =
-        whatsappNumber;
-
-
-        /* ---------------------------------------------
-           India number conversion
-        --------------------------------------------- */
-
-        if (
-            formattedNumber.length === 10 &&
-            formattedNumber.startsWith("0") === false
-        ) {
-
-            formattedNumber =
-            "91" +
-            formattedNumber;
-
+            return;
         }
 
 
-        if (
-            formattedNumber.length === 11 &&
-            formattedNumber.startsWith("0")
-        ) {
+        /* =================================================
+           SUCCESS
+           ================================================= */
 
-            formattedNumber =
-            "91" +
-            formattedNumber.substring(1);
-
-        }
+        showMessage(
+            "🎉 Order saved successfully!",
+            true
+        );
 
 
-        const message =
+        button.textContent =
+        "Order Placed ✓";
 
-`Hello ${customerName},
 
-Regarding your PunjabiJutti order:
+        /* =================================================
+           WHATSAPP
+           ================================================= */
 
-Product: ${productName}
+        const whatsappMessage =
+
+`Hello AtoZ Jutti,
+
+I want to place an order.
+
+Customer Name: ${customerName}
+Product: ${product}
 Size: ${size}
 Quantity: ${quantity}
 Price: ₹${price}
 Total: ₹${total}
+Mobile: ${mobile}
+
+Delivery Address:
+${address}
 
 Thank you.`;
 
 
-        whatsappURL =
-            "https://wa.me/" +
-            formattedNumber +
-            "?text=" +
-            encodeURIComponent(message);
+        /*
+        IMPORTANT:
+        CHANGE THIS NUMBER TO YOUR BUSINESS
+        WHATSAPP NUMBER.
 
-    }
+        Example:
+        9876543210
 
+        becomes:
 
-    row.innerHTML = `
+        919876543210
+        */
 
-        <td>
-            ${escapeHTML(String(orderId))}
-        </td>
-
-
-        <td>
-            ${escapeHTML(createdAt)}
-        </td>
+        const businessWhatsApp =
+        "919999999999";
 
 
-        <td>
-            <strong>
-                ${escapeHTML(String(customerName))}
-            </strong>
-        </td>
-
-
-        <td>
-            ${escapeHTML(String(mobile))}
-        </td>
-
-
-        <td>
-            ${escapeHTML(String(address))}
-        </td>
-
-
-        <td>
-            ${escapeHTML(String(productName))}
-        </td>
-
-
-        <td>
-            ${escapeHTML(String(size))}
-        </td>
-
-
-        <td>
-            ${quantity}
-        </td>
-
-
-        <td>
-            ₹${price.toLocaleString("en-IN")}
-        </td>
-
-
-        <td>
-            <strong>
-                ₹${total.toLocaleString("en-IN")}
-            </strong>
-        </td>
-
-
-        <td>
-
-            ${
-                whatsappNumber
-                ?
-                `
-                <a
-                    href="${whatsappURL}"
-                    target="_blank"
-                    class="whatsapp-button"
-                >
-                    WhatsApp
-                </a>
-                `
-                :
-                "No mobile"
-            }
-
-        </td>
-
-
-        <td>
-
-            <button
-                class="delete-button"
-                onclick="deleteOrder('${escapeAttribute(String(orderId))}')"
-            >
-                Delete
-            </button>
-
-        </td>
-
-    `;
-
-
-    ordersTableBody.appendChild(row);
-
-}
-
-
-/* =====================================================
-   UPDATE STATISTICS
-===================================================== */
-
-function updateStats(orders) {
-
-    let totalQuantity = 0;
-
-    let totalSales = 0;
-
-
-    orders.forEach(order => {
-
-        totalQuantity +=
-            Number(order.quantity || 0);
-
-        totalSales +=
-            Number(order.total || 0);
-
-    });
-
-
-    document.getElementById(
-        "totalOrders"
-    ).textContent =
-        orders.length;
-
-
-    document.getElementById(
-        "totalQuantity"
-    ).textContent =
-        totalQuantity;
-
-
-    document.getElementById(
-        "totalSales"
-    ).textContent =
-        "₹" +
-        totalSales.toLocaleString("en-IN");
-
-}
-
-
-/* =====================================================
-   DELETE ORDER
-===================================================== */
-
-window.deleteOrder = async function(orderId) {
-
-    if (!orderId) {
-
-        alert(
-            "Order ID is missing."
-        );
-
-        return;
-    }
-
-
-    const confirmed =
-        confirm(
-            "Are you sure you want to delete this order?"
+        const whatsappURL =
+        "https://wa.me/" +
+        businessWhatsApp +
+        "?text=" +
+        encodeURIComponent(
+            whatsappMessage
         );
 
 
-    if (!confirmed) {
+        const whatsappButton =
+        document
+        .getElementById(
+            "whatsappButton"
+        );
 
-        return;
+
+        whatsappButton.href =
+        whatsappURL;
+
+
+        whatsappButton.style.display =
+        "block";
+
+
     }
 
-
-    showStatus(
-        "Deleting order..."
-    );
-
-
-    const {
-        error
-    } = await supabase
-
-        .from("orders")
-
-        .delete()
-
-        .eq("id", orderId);
-
-
-    if (error) {
+    catch(error){
 
         console.error(
-            "DELETE ERROR:",
+            "CONNECTION ERROR:",
             error
         );
 
 
-        alert(
-            "Could not delete order: " +
-            error.message
+        showMessage(
+
+            "Connection error: " +
+            error.message,
+
+            false
+
         );
 
 
-        return;
+        button.disabled = false;
+
+        button.textContent =
+        "Place Order";
+
     }
-
-
-    alert(
-        "Order deleted successfully."
-    );
-
-
-    loadOrders();
 
 };
 
 
 /* =====================================================
-   ESCAPE HTML
-===================================================== */
+   MESSAGE
+   ===================================================== */
 
-function escapeHTML(value) {
+function showMessage(
+    text,
+    success
+){
 
-    return String(value)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
-}
+    const message =
+    document
+    .getElementById("message");
 
 
-/* =====================================================
-   ESCAPE ATTRIBUTE
-===================================================== */
+    message.textContent =
+    text;
 
-function escapeAttribute(value) {
 
-    return String(value)
+    message.style.display =
+    "block";
 
-        .replace(/\\/g, "\\\\")
 
-        .replace(/'/g, "\\'")
-
-        .replace(/"/g, "&quot;");
+    message.className =
+    success
+    ? "message success"
+    : "message error";
 
 }
-
-
-/* =====================================================
-   ENTER KEY LOGIN
-===================================================== */
-
-document.getElementById(
-    "password"
-).addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-
-            login();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   AUTH STATE CHANGE
-===================================================== */
-
-supabase.auth.onAuthStateChange(
-    (event, session) => {
-
-        console.log(
-            "AUTH EVENT:",
-            event
-        );
-
-
-        if (
-            event === "SIGNED_OUT"
-        ) {
-
-            dashboardPage.style.display =
-                "none";
-
-            loginPage.style.display =
-                "flex";
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   START
-===================================================== */
-
-checkSession();
 
 </script>
 
