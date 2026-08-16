@@ -65,9 +65,6 @@ nav a{margin:0 7px;font-size:13px}
 </head>
 
 <body>
-<script>
-function imageError(img){img.style.display="none"; const box=document.createElement("div"); box.style.cssText="height:300px;display:flex;align-items:center;justify-content:center;background:#f8eee7;color:#8b1227;font-weight:700;text-align:center;padding:20px"; box.textContent="Image not found: "+img.getAttribute("src"); img.parentNode.insertBefore(box,img);}
-</script>
 
 <header>
     <h1>PunjabiJutti</h1>
@@ -86,145 +83,115 @@ function imageError(img){img.style.display="none"; const box=document.createElem
     <h2>Step Into Punjabi Elegance</h2>
     <p>Discover handcrafted Punjabi Juttis designed to bring traditional artistry and modern style to every occasion.</p>
     <span class="tagline">✨ Handmade • Elegant • Comfortable</span>
-    <div style="margin-top:12px;color:#8b1227;font-weight:700">👆 Click any jutti image to order instantly</div>
+    <div style="margin-top:12px;color:#8b1227;font-weight:700">👆 Click any jutti image to order</div>
 
 </section>
 
 <section id="products" class="products">
 
     <div class="product-card">
-        <img src="jutti1.jpg" alt="Royal Gold Embroidery Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Royal Gold Embroidery Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Royal Gold Embroidery Jutti')}">
-        <h3>Royal Gold Embroidery Jutti</h3>
+        <img src="jutti1.jpg" alt="Punjabi Jutti worn on feet - Collection 1" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 1</h3>
         <p class="price">₹999</p>
-        <button class="buy-btn" onclick="selectProduct('Royal Gold Embroidery Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti2.jpg" alt="Pink Floral Punjabi Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Pink Floral Punjabi Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Pink Floral Punjabi Jutti')}">
-        <h3>Pink Floral Punjabi Jutti</h3>
+        <img src="jutti2.jpg" alt="Punjabi Jutti worn on feet - Collection 2" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 2</h3>
         <p class="price">₹1099</p>
-        <button class="buy-btn" onclick="selectProduct('Pink Floral Punjabi Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti3.jpg" alt="Blue Mirror Work Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Blue Mirror Work Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Blue Mirror Work Jutti')}">
-        <h3>Blue Mirror Work Jutti</h3>
+        <img src="jutti3.jpg" alt="Punjabi Jutti worn on feet - Collection 3" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 3</h3>
         <p class="price">₹1199</p>
-        <button class="buy-btn" onclick="selectProduct('Blue Mirror Work Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti4.jpg" alt="Maroon Wedding Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Maroon Wedding Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Maroon Wedding Jutti')}">
-        <h3>Maroon Wedding Jutti</h3>
+        <img src="jutti4.jpg" alt="Punjabi Jutti worn on feet - Collection 4" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 4</h3>
         <p class="price">₹1299</p>
-        <button class="buy-btn" onclick="selectProduct('Maroon Wedding Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti5.jpg" alt="Mint Green Handwork Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Mint Green Handwork Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Mint Green Handwork Jutti')}">
-        <h3>Mint Green Handwork Jutti</h3>
-        <p class="price">₹1099</p>
-        <button class="buy-btn" onclick="selectProduct('Mint Green Handwork Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti6.jpg" alt="Black Gold Designer Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Black Gold Designer Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Black Gold Designer Jutti')}">
-        <h3>Black Gold Designer Jutti</h3>
-        <p class="price">₹1199</p>
-        <button class="buy-btn" onclick="selectProduct('Black Gold Designer Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti7.jpg" alt="Peach Embroidered Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Peach Embroidered Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Peach Embroidered Jutti')}">
-        <h3>Peach Embroidered Jutti</h3>
-        <p class="price">₹1099</p>
-        <button class="buy-btn" onclick="selectProduct('Peach Embroidered Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti8.jpg" alt="Ivory Pearl Punjabi Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Ivory Pearl Punjabi Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Ivory Pearl Punjabi Jutti')}">
-        <h3>Ivory Pearl Punjabi Jutti</h3>
-        <p class="price">₹1299</p>
-        <button class="buy-btn" onclick="selectProduct('Ivory Pearl Punjabi Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti9.jpg" alt="Mustard Traditional Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Mustard Traditional Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Mustard Traditional Jutti')}">
-        <h3>Mustard Traditional Jutti</h3>
+        <img src="jutti5.jpg" alt="Punjabi Jutti worn on feet - Collection 5" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 5</h3>
         <p class="price">₹999</p>
-        <button class="buy-btn" onclick="selectProduct('Mustard Traditional Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti10.jpg" alt="Silver Festive Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Silver Festive Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Silver Festive Jutti')}">
-        <h3>Silver Festive Jutti</h3>
-        <p class="price">₹1299</p>
-        <button class="buy-btn" onclick="selectProduct('Silver Festive Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti11.jpg" alt="Emerald Green Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Emerald Green Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Emerald Green Jutti')}">
-        <h3>Emerald Green Jutti</h3>
-        <p class="price">₹1199</p>
-        <button class="buy-btn" onclick="selectProduct('Emerald Green Jutti')">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="jutti12.jpg" alt="Cream Zari Work Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Cream Zari Work Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Cream Zari Work Jutti')}">
-        <h3>Cream Zari Work Jutti</h3>
+        <img src="jutti6.jpg" alt="Punjabi Jutti worn on feet - Collection 6" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 6</h3>
         <p class="price">₹1099</p>
-        <button class="buy-btn" onclick="selectProduct('Cream Zari Work Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti13.jpg" alt="Lavender Designer Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Lavender Designer Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Lavender Designer Jutti')}">
-        <h3>Lavender Designer Jutti</h3>
+        <img src="jutti7.jpg" alt="Punjabi Jutti worn on feet - Collection 7" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 7</h3>
         <p class="price">₹1199</p>
-        <button class="buy-btn" onclick="selectProduct('Lavender Designer Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti14.jpg" alt="Red Bridal Punjabi Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Red Bridal Punjabi Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Red Bridal Punjabi Jutti')}">
-        <h3>Red Bridal Punjabi Jutti</h3>
-        <p class="price">₹1399</p>
-        <button class="buy-btn" onclick="selectProduct('Red Bridal Punjabi Jutti')">Buy Now</button>
+        <img src="jutti8.jpg" alt="Punjabi Jutti worn on feet - Collection 8" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 8</h3>
+        <p class="price">₹1299</p>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
     </div>
 
     <div class="product-card">
-        <img src="jutti15.jpg" alt="Royal Blue Embroidered Jutti worn on feet" loading="lazy" onerror="imageError(this)"
-             onclick="selectProduct('Royal Blue Embroidered Jutti')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Royal Blue Embroidered Jutti')}">
-        <h3>Royal Blue Embroidered Jutti</h3>
+        <img src="jutti9.jpg" alt="Punjabi Jutti worn on feet - Collection 9" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 9</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti10.jpg" alt="Punjabi Jutti worn on feet - Collection 10" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 10</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti11.jpg" alt="Punjabi Jutti worn on feet - Collection 11" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 11</h3>
         <p class="price">₹1199</p>
-        <button class="buy-btn" onclick="selectProduct('Royal Blue Embroidered Jutti')">Buy Now</button>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti12.jpg" alt="Punjabi Jutti worn on feet - Collection 12" loading="lazy" onclick="selectProduct('Wedding Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Wedding Punjabi Jutti')}">
+        <h3>Wedding Punjabi Jutti 12</h3>
+        <p class="price">₹1299</p>
+        <button class="buy-btn" onclick="selectProduct('Wedding Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti13.jpg" alt="Punjabi Jutti worn on feet - Collection 13" loading="lazy" onclick="selectProduct('Traditional Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Traditional Punjabi Jutti')}">
+        <h3>Traditional Punjabi Jutti 13</h3>
+        <p class="price">₹999</p>
+        <button class="buy-btn" onclick="selectProduct('Traditional Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti14.jpg" alt="Punjabi Jutti worn on feet - Collection 14" loading="lazy" onclick="selectProduct('Embroidered Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Embroidered Punjabi Jutti')}">
+        <h3>Embroidered Punjabi Jutti 14</h3>
+        <p class="price">₹1099</p>
+        <button class="buy-btn" onclick="selectProduct('Embroidered Punjabi Jutti')">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+        <img src="jutti15.jpg" alt="Punjabi Jutti worn on feet - Collection 15" loading="lazy" onclick="selectProduct('Designer Punjabi Jutti')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){selectProduct('Designer Punjabi Jutti')}">
+        <h3>Designer Punjabi Jutti 15</h3>
+        <p class="price">₹1199</p>
+        <button class="buy-btn" onclick="selectProduct('Designer Punjabi Jutti')">Buy Now</button>
     </div>
 
 </section>
@@ -250,22 +217,27 @@ function imageError(img){img.style.display="none"; const box=document.createElem
     </label>
 
     <select id="productName" onchange="updatePrice()">
-        <option value="">-- Select Product --</option>
-        <option value="Royal Gold Embroidery Jutti">Royal Gold Embroidery Jutti - ₹999</option>
-        <option value="Pink Floral Punjabi Jutti">Pink Floral Punjabi Jutti - ₹1099</option>
-        <option value="Blue Mirror Work Jutti">Blue Mirror Work Jutti - ₹1199</option>
-        <option value="Maroon Wedding Jutti">Maroon Wedding Jutti - ₹1299</option>
-        <option value="Mint Green Handwork Jutti">Mint Green Handwork Jutti - ₹1099</option>
-        <option value="Black Gold Designer Jutti">Black Gold Designer Jutti - ₹1199</option>
-        <option value="Peach Embroidered Jutti">Peach Embroidered Jutti - ₹1099</option>
-        <option value="Ivory Pearl Punjabi Jutti">Ivory Pearl Punjabi Jutti - ₹1299</option>
-        <option value="Mustard Traditional Jutti">Mustard Traditional Jutti - ₹999</option>
-        <option value="Silver Festive Jutti">Silver Festive Jutti - ₹1299</option>
-        <option value="Emerald Green Jutti">Emerald Green Jutti - ₹1199</option>
-        <option value="Cream Zari Work Jutti">Cream Zari Work Jutti - ₹1099</option>
-        <option value="Lavender Designer Jutti">Lavender Designer Jutti - ₹1199</option>
-        <option value="Red Bridal Punjabi Jutti">Red Bridal Punjabi Jutti - ₹1399</option>
-        <option value="Royal Blue Embroidered Jutti">Royal Blue Embroidered Jutti - ₹1199</option>
+
+        <option value="">
+            -- Select Product --
+        </option>
+
+        <option value="Traditional Punjabi Jutti">
+            Traditional Punjabi Jutti - ₹999
+        </option>
+
+        <option value="Embroidered Punjabi Jutti">
+            Embroidered Punjabi Jutti - ₹1099
+        </option>
+
+        <option value="Designer Punjabi Jutti">
+            Designer Punjabi Jutti - ₹1199
+        </option>
+
+        <option value="Wedding Punjabi Jutti">
+            Wedding Punjabi Jutti - ₹1299
+        </option>
+
     </select>
 
 
@@ -467,21 +439,15 @@ createClient(
    ===================================================== */
 
 const prices = {
-    "Royal Gold Embroidery Jutti":999,
-    "Pink Floral Punjabi Jutti":1099,
-    "Blue Mirror Work Jutti":1199,
-    "Maroon Wedding Jutti":1299,
-    "Mint Green Handwork Jutti":1099,
-    "Black Gold Designer Jutti":1199,
-    "Peach Embroidered Jutti":1099,
-    "Ivory Pearl Punjabi Jutti":1299,
-    "Mustard Traditional Jutti":999,
-    "Silver Festive Jutti":1299,
-    "Emerald Green Jutti":1199,
-    "Cream Zari Work Jutti":1099,
-    "Lavender Designer Jutti":1199,
-    "Red Bridal Punjabi Jutti":1399,
-    "Royal Blue Embroidered Jutti":1199
+
+    "Traditional Punjabi Jutti":999,
+
+    "Embroidered Punjabi Jutti":1099,
+
+    "Designer Punjabi Jutti":1199,
+
+    "Wedding Punjabi Jutti":1299
+
 };
 
 
